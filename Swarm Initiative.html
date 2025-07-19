@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Case Study – The SWARM Initiative</title>
+  <style>
+    :root {
+      --swarm-green: #00ff91;
+      --swarm-dark: #0e1f17;
+      --swarm-gray: #94a3b8;
+    }
+ body {
+            font-family: 'Orbitron', sans-serif;
+            background-color: var(--dark-bg);
+            color: white;
+            cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16'><circle cx='8' cy='8' r='6' fill='none' stroke='%23ffffff' stroke-width='2'/><circle cx='8' cy='8' r='2' fill='%23ffffff'/></svg>"), auto;
+            overflow-x: hidden;
+        }
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      background-color: var(--swarm-dark);
+      color: white;
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .back-link {
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      background-color: rgba(255, 255, 255, 0.05);
+      padding: 10px 20px;
+      border-radius: 50px;
+      color: var(--swarm-green);
+      font-weight: bold;
+      font-size: 0.95rem;
+      transition: background 0.3s;
+      z-index: 1000;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    }
+
+    .back-link:hover {
+      background-color: rgba(255, 255, 255, 0.1);
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 80px 20px 60px;
+      text-align: center;
+    }
+
+    h1 {
+      color: var(--swarm-green);
+      font-size: 3rem;
+      margin-bottom: 20px;
+    }
+
+    h2 {
+      color: white;
+      font-size: 1.5rem;
+      margin-bottom: 30px;
+    }
+
+    .locked-box {
+      background: rgba(255, 255, 255, 0.05);
+      border: 2px dashed var(--swarm-green);
+      border-radius: 12px;
+      padding: 40px 30px;
+      margin: 50px 0;
+      backdrop-filter: blur(6px);
+      filter: blur(3px);
+      pointer-events: none;
+      user-select: none;
+      color: rgba(255, 255, 255, 0.4);
+    }
+
+    .unlock-info {
+      color: var(--swarm-green);
+      margin-top: 40px;
+      font-weight: 600;
+    }
+
+    .disclaimer {
+      color: var(--swarm-gray);
+      font-style: italic;
+      margin-top: 30px;
+      font-size: 1rem;
+    }
+
+    .button {
+      display: inline-block;
+      margin-top: 30px;
+      padding: 12px 30px;
+      background-color: var(--swarm-green);
+      color: var(--swarm-dark);
+      font-weight: 600;
+      border-radius: 50px;
+      text-decoration: none;
+      transition: 0.3s ease;
+    }
+
+    .button:hover {
+      background-color: #0f0;
+    }
+
+    .next-project {
+      margin-top: 60px;
+      display: flex;
+      justify-content: center;
+    }
+
+    footer {
+      margin-top: 80px;
+      color: var(--swarm-gray);
+      font-size: 0.9rem;
+    }
+     .project-nav {
+            margin-top: 30px;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        
+        .project-nav a {
+            background-color: var(--accent-green);
+            color: white;
+            padding: 12px 24px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+        
+        .project-nav a:hover {
+            background-color: #388e3c;
+            transform: translateY(-2px);
+        }
+  </style>
+</head>
+<body>
+  <!-- Back to Portfolio -->
+  <a href="index.html" class="back-link">← Back to Portfolio</a>
+
+  <div class="container">
+    <h1>The SWARM Initiative</h1>
+    <h2>Strategic UX Case Study</h2>
+
+    <div class="locked-box">
+      <p><strong>Overview:</strong> Key findings, user flows, wireframes, and final UI screens were designed to enhance business scaling and optimize conversion across the sales journey.</p>
+      <p><strong>Tools Used:</strong> Figma, Maze, Notion, Webflow</p>
+      <p><strong>Timeline:</strong> 3 Months</p>
+    </div>
+
+    <div class="unlock-info">
+      🔒 This case study is currently under NDA or features unreleased material.<br/>
+      Full access will be available once clearance is provided by the client.
+    </div>
+
+    <p class="disclaimer">
+      For more details or a private walk-through, please <a href="mailto:mwangiminion3@gmail.com" class="button">Request Access</a>
+    </p>
+
+    <!-- Next Project -->
+    <div class="project-nav">
+      <a href="Afri Meals.html" class="button">Next Project →</a>
+    </div>
+<div class="project-nav">
+      <a href="crystalfrozen.html" class="button">previous Project</a>
+    </div>
+    <!-- Footer -->
+    <footer>
+      &copy; 2025 Elias Chege Mwangi — Portfolio Confidential
+    </footer>
+  </div>
+</body>
+</html>

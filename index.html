@@ -1,0 +1,913 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elias Mwangi | UX Designer Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=VT323&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --neon-green: #00ff99;
+            --neon-cyan: #00ffff;
+            --neon-purple: #b388ff;
+            --dark-bg: #0a0a0a;
+        }
+        
+        body {
+            font-family: 'Orbitron', sans-serif;
+            background-color: var(--dark-bg);
+            color: white;
+            cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16'><circle cx='8' cy='8' r='6' fill='none' stroke='%2300ff99' stroke-width='2'/><circle cx='8' cy='8' r='2' fill='%2300ff99'/></svg>"), auto;
+            overflow-x: hidden;
+        }
+        
+        .pixel-font {
+            font-family: 'VT323', monospace;
+        }
+        
+        .glow-text {
+            text-shadow: 0 0 5px var(--neon-green), 0 0 10px var(--neon-green);
+        }
+        
+        .glow-box {
+            box-shadow: 0 0 10px rgba(0, 255, 153, 0.5), 0 0 20px rgba(0, 255, 153, 0.2);
+        }
+        
+        .panel {
+            background: rgba(10, 10, 10, 0.7);
+            border: 1px solid var(--neon-green);
+            border-radius: 4px;
+        }
+        
+        .typewriter {
+            overflow: hidden;
+            border-right: .15em solid var(--neon-green);
+            white-space: nowrap;
+            animation: typing 3.5s steps(40, end), blink-caret .75s step-end infinite;
+        }
+        
+        @keyframes typing {
+            from { width: 0 }
+            to { width: 100% }
+        }
+        
+        @keyframes blink-caret {
+            from, to { border-color: transparent }
+            50% { border-color: var(--neon-green) }
+        }
+        
+        .xp-bar {
+            height: 10px;
+            background: linear-gradient(90deg, var(--neon-green) 0%, var(--neon-cyan) 100%);
+            animation: xp-glow 2s infinite alternate;
+        }
+        
+        @keyframes xp-glow {
+            0% { box-shadow: 0 0 5px var(--neon-green); }
+            100% { box-shadow: 0 0 15px var(--neon-cyan); }
+        }
+        
+        .skill-tag {
+            background: rgba(0, 255, 153, 0.1);
+            border: 1px solid var(--neon-green);
+        }
+        
+        .tool-item {
+            transition: all 0.3s ease;
+        }
+        
+        .tool-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0, 255, 153, 0.4);
+        }
+        
+        .mission-card {
+            transition: all 0.3s ease;
+            border-left: 3px solid var(--neon-green);
+        }
+        
+        .mission-card:hover {
+            transform: translateX(5px);
+            background: rgba(0, 255, 153, 0.05);
+        }
+        
+        .project-card {
+            transition: all 0.3s ease;
+            background: rgba(20, 20, 20, 0.7);
+            opacity: 1;
+            transform: none;
+        }
+        
+        .project-card:hover {
+            transform: scale(1.02) !important;
+            box-shadow: 0 0 15px rgba(0, 255, 153, 0.3);
+        }
+        
+        input, textarea {
+            background: rgba(20, 20, 20, 0.7);
+            border: 1px solid var(--neon-green);
+            color: white;
+        }
+        
+        input:focus, textarea:focus {
+            outline: none;
+            box-shadow: 0 0 10px rgba(0, 255, 153, 0.5);
+        }
+        
+        .btn-primary {
+            background: linear-gradient(90deg, var(--neon-green) 0%, var(--neon-cyan) 100%);
+            color: black;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 255, 153, 0.4);
+        }
+        
+        .joystick-nav {
+            position: fixed;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 1000;
+        }
+        
+        .joystick-btn {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(0, 255, 153, 0.2);
+            border: 1px solid var(--neon-green);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 10px 0;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        .joystick-btn:hover {
+            background: rgba(0, 255, 153, 0.5);
+            transform: scale(1.1);
+        }
+        
+        .joystick-btn::after {
+            content: attr(title);
+            position: absolute;
+            right: 50px;
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 12px;
+            white-space: nowrap;
+            opacity: 0;
+            transition: opacity 0.3s;
+            pointer-events: none;
+        }
+        
+        .joystick-btn:hover::after {
+            opacity: 1;
+        }
+        
+        .joystick-btn:first-child {
+            background: rgba(0, 255, 153, 0.3);
+            margin-bottom: 20px;
+        }
+        
+        .active-section {
+            color: var(--neon-green);
+            text-shadow: 0 0 5px var(--neon-green);
+        }
+
+        /* AI Sound Notification */
+        .ai-notification {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: rgba(0, 255, 153, 0.2);
+            border: 1px solid var(--neon-green);
+            padding: 10px 15px;
+            border-radius: 5px;
+            display: flex;
+            align-items: center;
+            z-index: 1000;
+            transform: translateY(100px);
+            opacity: 0;
+            transition: all 0.3s ease;
+        }
+
+        .ai-notification.active {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .ai-notification .ai-icon {
+            margin-right: 10px;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+
+        @media (max-width: 768px) {
+            .joystick-nav {
+                display: none;
+            }
+            
+            .typewriter {
+                animation: none;
+                border-right: none;
+                white-space: normal;
+            }
+        }
+    </style>
+</head>
+<body class="min-h-screen">
+    <!-- Audio Elements -->
+    <audio id="hoverSound" src="https://assets.mixkit.co/sfx/preview/mixkit-arcade-game-jump-coin-216.mp3" preload="auto"></audio>
+    <audio id="clickSound" src="https://assets.mixkit.co/sfx/preview/mixkit-select-click-1109.mp3" preload="auto"></audio>
+    <audio id="bgMusic" loop>
+        <source src="https://assets.mixkit.co/music/preview/mixkit-tech-house-vibes-130.mp3" type="audio/mpeg">
+    </audio>
+    <!-- AI Sounds -->
+    <audio id="aiStartup" src="https://assets.mixkit.co/sfx/preview/mixkit-robot-digital-scan-914.mp3" preload="auto"></audio>
+    <audio id="aiNotification" src="https://assets.mixkit.co/sfx/preview/mixkit-sci-fi-notification-911.mp3" preload="auto"></audio>
+    <audio id="aiSuccess" src="https://assets.mixkit.co/sfx/preview/mixkit-achievement-bell-600.mp3" preload="auto"></audio>
+    <audio id="aiError" src="https://assets.mixkit.co/sfx/preview/mixkit-sci-fi-negative-914.mp3" preload="auto"></audio>
+
+    <!-- AI Notification -->
+    <div id="aiNotificationBox" class="ai-notification">
+        <span class="ai-icon">🤖</span>
+        <span id="aiMessage">System initialized</span>
+    </div>
+
+    <!-- Start Screen -->
+    <section id="start" class="min-h-screen flex flex-col items-center justify-center p-4 relative overflow-hidden">
+        <div class="absolute inset-0 bg-black opacity-70"></div>
+        <div class="absolute inset-0 flex items-center justify-center overflow-hidden">
+            <div class="grid grid-cols-5 grid-rows-5 gap-1 w-full h-full">
+                <!-- Grid pattern for cyberpunk effect -->
+                <div class="border border-gray-900"></div>
+                <div class="border border-gray-900"></div>
+                <div class="border border-gray-900"></div>
+                <div class="border border-gray-900"></div>
+                <div class="border border-gray-900"></div>
+                <div class="border border-gray-900"></div>
+                <div class="border border-gray-900"></div>
+                <div class="border border-gray-900"></div>
+                <div class="border border-gray-900"></div>
+                <div class="border border-gray-900"></div>
+                <div class="border border-gray-900"></div>
+                <div class="border border-gray-900"></div>
+                <div class="border border-gray-900"></div>
+                <div class="border border-gray-900"></div>
+                <div class="border border-gray-900"></div>
+                <div class="border border-gray-900"></div>
+                <div class="border border-gray-900"></div>
+                <div class="border border-gray-900"></div>
+                <div class="border border-gray-900"></div>
+                <div class="border border-gray-900"></div>
+                <div class="border border-gray-900"></div>
+                <div class="border border-gray-900"></div>
+                <div class="border border-gray-900"></div>
+                <div class="border border-gray-900"></div>
+                <div class="border border-gray-900"></div>
+            </div>
+        </div>
+        
+        <div class="relative z-10 text-center max-w-2xl w-full">
+            <h1 class="text-5xl md:text-7xl font-bold mb-6 glow-text typewriter">Welcome, Player 1</h1>
+            
+            <div class="flex justify-center mb-8">
+                <div class="w-32 h-32 md:w-40 md:h-40 rounded-full border-4 border-green-400 overflow-hidden glow-box">
+                    <img src="images/ppp.jpg" alt="Elias Mwangi" class="w-full h-full object-cover">
+                </div>
+            </div>
+            
+            <h2 class="text-2xl md:text-3xl mb-4 glow-text">Elias Mwangi</h2>
+            <p class="text-xl md:text-2xl text-green-400 mb-8 pixel-font">UX/UI Designer & Digital Craftsman</p>
+            
+            <button id="startBtn" class="btn-primary px-8 py-3 rounded-full text-lg font-bold mb-8" onclick="playClickSound()">
+                START MISSION
+            </button>
+            
+            <div class="flex justify-center space-x-4">
+                <button id="musicToggle" class="w-10 h-10 rounded-full border border-green-400 flex items-center justify-center" onclick="toggleMusic()">
+                    <span id="musicIcon">🔊</span>
+                </button>
+                <button class="w-10 h-10 rounded-full border border-green-400 flex items-center justify-center" onclick="playClickSound()">
+                    <span>🔊FX</span>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content (hidden until start) -->
+    <div id="mainContent" class="hidden">
+        <!-- Navigation Joystick -->
+        <div class="joystick-nav">
+            <div class="joystick-btn" onclick="scrollToSection('start')" onmouseenter="playHoverSound()" title="Return to Home">
+                🏠
+            </div>
+            <div class="joystick-btn" onclick="scrollToSection('quests')" onmouseenter="playHoverSound()" title="Projects">
+                🎮
+            </div>
+            
+            <div class="joystick-btn" onclick="scrollToSection('profile')" onmouseenter="playHoverSound()" title="Profile">
+                👤
+            </div>
+            <div class="joystick-btn" onclick="scrollToSection('inventory')" onmouseenter="playHoverSound()" title="Skills">
+                🛠️
+            </div>
+            <div class="joystick-btn" onclick="scrollToSection('missions')" onmouseenter="playHoverSound()" title="Experience">
+                📜
+            </div>
+            <div class="joystick-btn" onclick="scrollToSection('contact')" onmouseenter="playHoverSound()" title="Contact">
+                📡
+            </div>
+        </div>
+
+        <!-- Quests Section -->
+        <section id="quests" class="py-20 px-4 md:px-10 lg:px-20">
+            <div class="max-w-6xl mx-auto">
+                <h2 class="text-3xl md:text-4xl font-bold mb-12 text-center glow-text pixel-font">// ACTIVE QUESTS</h2>
+                
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
+                    <!-- Project 1 (Big Left) -->
+                    <div class="project-card p-0 rounded-lg border border-gray-800 overflow-hidden relative group" 
+                         onmouseenter="playHoverSound()">
+                        <div class="h-64 overflow-hidden">
+                            <img src="images/Rectangle.png" alt="Bloom App" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+                        </div>
+                        <div class="p-6">
+                            <div class="flex justify-between items-start mb-4">
+                                <h3 class="text-xl font-bold text-green-400">Bloom App</h3>
+                                <span class="text-xs px-2 py-1 bg-purple-900 rounded">UX/UI</span>
+                            </div>
+                            <p class="text-gray-300 mb-4">An app That checks on your Mood.</p>
+                            <div class="flex justify-between items-center">
+                                <span class="text-xs text-gray-400">COMPLETED: 2024</span>
+                                <button class="text-xs px-3 py-1 border border-green-400 rounded hover:bg-green-400 hover:text-black transition" onclick="playClickSound()">
+                                    <a href="Bloom app.html" target="_blank">VIEW Case Study</a>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Project 2 (Small Right) -->
+                    <div class="project-card p-0 rounded-lg border border-gray-800 overflow-hidden relative group" 
+                         onmouseenter="playHoverSound()">
+                        <div class="h-48 overflow-hidden">
+                            <img src="images/index.html.svg" alt="Crystal Frozen" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+                        </div>
+                        <div class="p-6">
+                            <div class="flex justify-between items-start mb-4">
+                                <h3 class="text-xl font-bold text-green-400">Crystal Frozen</h3>
+                                <span class="text-xs px-2 py-1 bg-blue-900 rounded">Web App</span>
+                            </div>
+                            <p class="text-gray-300 mb-4">An E-commerce website for crystal frozen.</p>
+                            <div class="flex justify-between items-center">
+                                <span class="text-xs text-gray-400">COMPLETED: 2023</span>
+                                <button class="text-xs px-3 py-1 border border-green-400 rounded hover:bg-green-400 hover:text-black transition" onclick="playClickSound()">
+                                    <a href="crystalfrozen.html" target="_blank">View Case Study</a> 
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Project 3 (Small Left) -->
+                    <div class="project-card p-0 rounded-lg border border-gray-800 overflow-hidden relative group" 
+                         onmouseenter="playHoverSound()">
+                        <div class="h-48 overflow-hidden">
+                            <img src="images/MacBook Air 13.svg" alt="Swarm Initiative" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+                        </div>
+                        <div class="p-6">
+                            <div class="flex justify-between items-start mb-4">
+                                <h3 class="text-xl font-bold text-green-400">Swarm Initiative</h3>
+                                <span class="text-xs px-2 py-1 bg-red-900 rounded">Web</span>
+                            </div>
+                            <p class="text-gray-300 mb-4">Redesigned web app for compost waste bins.</p>
+                            <div class="flex justify-between items-center">
+                                <span class="text-xs text-gray-400">COMPLETED: 2025</span>
+                                <button class="text-xs px-3 py-1 border border-green-400 rounded hover:bg-green-400 hover:text-black transition" onclick="playClickSound()">
+                                    <a href="Swarm Initiative.html">locked</a>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Project 4 (Big Right) -->
+                    <div class="project-card p-0 rounded-lg border border-gray-800 overflow-hidden relative group" 
+                         onmouseenter="playHoverSound()">
+                        <div class="h-64 overflow-hidden">
+                            <img src="images/Rectangle.svg" alt="Afri Meals" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+                        </div>
+                        <div class="p-6">
+                            <div class="flex justify-between items-start mb-4">
+                                <h3 class="text-xl font-bold text-green-400">Afri Meals</h3>
+                                <span class="text-xs px-2 py-1 bg-yellow-900 rounded">Mobile App</span>
+                            </div>
+                            <p class="text-gray-300 mb-4">Food delivery app focused on local African meals.</p>
+                            <div class="flex justify-between items-center">
+                                <span class="text-xs text-gray-400">COMPLETED: 2024</span>
+                                <button class="text-xs px-3 py-1 border border-green-400 rounded hover:bg-green-400 hover:text-black transition" onclick="playClickSound()">
+                                    <a href="Afri Meals.html">VIEW CASE STUDY</a>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+         
+        <!-- Player Profile -->
+        <section id="profile" class="py-20 px-4 md:px-10 lg:px-20 bg-gray-900">
+            <div class="max-w-6xl mx-auto">
+                <h2 class="text-3xl md:text-4xl font-bold mb-12 text-center glow-text pixel-font">// PLAYER PROFILE</h2>
+                
+                <div class="flex flex-col md:flex-row gap-12">
+                    <div class="md:w-1/3 flex flex-col items-center">
+                        <div class="w-48 h-48 rounded-full border-4 border-green-400 overflow-hidden mb-6 glow-box">
+                            <img src="images/WhatsApp Image 2025-05-19 at 07.28.42_10fa52a6.jpg" alt="Elias Mwangi" class="w-full h-full object-cover">
+                        </div>
+                        
+                        <div class="text-center">
+                            <h3 class="text-2xl font-bold mb-2">Elias Mwangi</h3>
+                            <p class="text-green-400 mb-4 pixel-font">Level 28 UX Designer</p>
+                            
+                            <div class="w-full bg-gray-800 rounded-full h-4 mb-4">
+                                <div class="xp-bar rounded-full h-4" style="width: 75%"></div>
+                            </div>
+                            <p class="text-sm text-gray-400">XP: 7,500/10,000 to next level</p>
+                        </div>
+                    </div>
+                    
+                    <div class="md:w-2/3">
+                        <h3 class="text-xl font-bold mb-4 text-green-400">// BIOGRAPHY</h3>
+                        <p class="mb-6 text-gray-300">
+                            Hi, I'm Elias Chege Mwangi, a UX designer driven by creativity, empathy, and a strong eye for clean, user-friendly design. With a background in customer experience and a growing skillset in Figma, Framer, and no-code tools like Webflow and Glide, I enjoy turning ideas into interactive digital products that feel natural and purposeful. I'm also passionate about illusion art and interior concepts, blending visual aesthetics with real-world function in everything I create.
+                        
+                        <h3 class="text-xl font-bold mb-4 text-green-400">// SKILLS</h3>
+                        <div class="flex flex-wrap gap-3 mb-8">
+                            <span class="skill-tag px-3 py-1 rounded-full text-sm">UI Design +10</span>
+                            <span class="skill-tag px-3 py-1 rounded-full text-sm">UX Research +8</span>
+                            <span class="skill-tag px-3 py-1 rounded-full text-sm">Prototyping +9</span>
+                            <span class="skill-tag px-3 py-1 rounded-full text-sm">User Testing +7</span>
+                            <span class="skill-tag px-3 py-1 rounded-full text-sm">Information Architecture +8</span>
+                            <span class="skill-tag px-3 py-1 rounded-full text-sm">Interaction Design +9</span>
+                        </div>
+                        
+                        <h3 class="text-xl font-bold mb-4 text-green-400">// ACHIEVEMENTS</h3>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div class="panel p-4 flex items-center">
+                                <div class="w-10 h-10 bg-yellow-500 rounded-full flex items-center justify-center mr-4 text-black font-bold">★</div>
+                                <div>
+                                    <h4 class="font-bold">User Experience Course Certificate</h4>
+                                    <p class="text-sm text-gray-400">Finished the course and got the certificate from Coursera</p>
+                                </div>
+                            </div>
+                            <div class="panel p-4 flex items-center">
+                                <div class="w-10 h-10 bg-blue-500 rounded-full flex items-center justify-center mr-4 text-black font-bold">✧</div>
+                                <div>
+                                    <h4 class="font-bold">User Champion</h4>
+                                    <p class="text-sm text-gray-400">Advocate for user-centered design</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Inventory -->
+        <section id="inventory" class="py-20 px-4 md:px-10 lg:px-20">
+            <div class="max-w-6xl mx-auto">
+                <h2 class="text-3xl md:text-4xl font-bold mb-12 text-center glow-text pixel-font">// INVENTORY</h2>
+                
+                <h3 class="text-xl font-bold mb-6 text-green-400">// TOOLS & TECHNOLOGIES</h3>
+                <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6 mb-12">
+                    <div class="tool-item p-4 rounded-lg border border-gray-800 flex flex-col items-center" onmouseenter="playHoverSound()">
+                        <div class="w-16 h-16 mb-3 flex items-center justify-center">
+                            <span class="text-4xl">🖌️</span>
+                        </div>
+                        <span class="text-sm font-medium">Figma</span>
+                    </div>
+                    <div class="tool-item p-4 rounded-lg border border-gray-800 flex flex-col items-center" onmouseenter="playHoverSound()">
+                        <div class="w-16 h-16 mb-3 flex items-center justify-center">
+                            <span class="text-4xl">🎨</span>
+                        </div>
+                        <span class="text-sm font-medium">Adobe XD</span>
+                    </div>
+                    <div class="tool-item p-4 rounded-lg border border-gray-800 flex flex-col items-center" onmouseenter="playHoverSound()">
+                        <div class="w-16 h-16 mb-3 flex items-center justify-center">
+                            <span class="text-4xl">📷</span>
+                        </div>
+                        <span class="text-sm font-medium">Photoshop</span>
+                    </div>
+                    <div class="tool-item p-4 rounded-lg border border-gray-800 flex flex-col items-center" onmouseenter="playHoverSound()">
+                        <div class="w-16 h-16 mb-3 flex items-center justify-center">
+                            <span class="text-4xl">✏️</span>
+                        </div>
+                        <span class="text-sm font-medium">Illustrator</span>
+                    </div>
+                    <div class="tool-item p-4 rounded-lg border border-gray-800 flex flex-col items-center" onmouseenter="playHoverSound()">
+                        <div class="w-16 h-16 mb-3 flex items-center justify-center">
+                            <span class="text-4xl">🔄</span>
+                        </div>
+                        <span class="text-sm font-medium">Framer</span>
+                    </div>
+                    <div class="tool-item p-4 rounded-lg border border-gray-800 flex flex-col items-center" onmouseenter="playHoverSound()">
+                        <div class="w-16 h-16 mb-3 flex items-center justify-center">
+                            <span class="text-4xl">📱</span>
+                        </div>
+                        <span class="text-sm font-medium">ProtoPie</span>
+                    </div>
+                    <div class="tool-item p-4 rounded-lg border border-gray-800 flex flex-col items-center" onmouseenter="playHoverSound()">
+                        <div class="w-16 h-16 mb-3 flex items-center justify-center">
+                            <span class="text-4xl">📊</span>
+                        </div>
+                        <span class="text-sm font-medium">Miro</span>
+                    </div>
+                    <div class="tool-item p-4 rounded-lg border border-gray-800 flex flex-col items-center" onmouseenter="playHoverSound()">
+                        <div class="w-16 h-16 mb-3 flex items-center justify-center">
+                            <span class="text-4xl">🧪</span>
+                        </div>
+                        <span class="text-sm font-medium">UserTesting</span>
+                    </div>
+                    <div class="tool-item p-4 rounded-lg border border-gray-800 flex flex-col items-center" onmouseenter="playHoverSound()">
+                        <div class="w-16 h-16 mb-3 flex items-center justify-center">
+                            <span class="text-4xl">📝</span>
+                        </div>
+                        <span class="text-sm font-medium">Notion</span>
+                    </div>
+                    <div class="tool-item p-4 rounded-lg border border-gray-800 flex flex-col items-center" onmouseenter="playHoverSound()">
+                        <div class="w-16 h-16 mb-3 flex items-center justify-center">
+                            <span class="text-4xl">🔍</span>
+                        </div>
+                        <span class="text-sm font-medium">Hotjar</span>
+                    </div>
+                </div>
+                
+                <h3 class="text-xl font-bold mb-6 text-green-400">// DEVELOPMENT SKILLS</h3>
+                <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6">
+                    <div class="tool-item p-4 rounded-lg border border-gray-800 flex flex-col items-center" onmouseenter="playHoverSound()">
+                        <div class="w-16 h-16 mb-3 flex items-center justify-center">
+                            <span class="text-4xl">🟢</span>
+                        </div>
+                        <span class="text-sm font-medium">Basic HTML5</span>
+                    </div>
+                    <div class="tool-item p-4 rounded-lg border border-gray-800 flex flex-col items-center" onmouseenter="playHoverSound()">
+                        <div class="w-16 h-16 mb-3 flex items-center justify-center">
+                            <span class="text-4xl">🔵</span>
+                        </div>
+                        <span class="text-sm font-medium">Basic CSS3</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Mission Log -->
+        <section id="missions" class="py-20 px-4 md:px-10 lg:px-20 bg-gray-900">
+            <div class="max-w-6xl mx-auto">
+                <h2 class="text-3xl md:text-4xl font-bold mb-12 text-center glow-text pixel-font">// MISSION LOG</h2>
+                
+                <div class="relative">
+                    <!-- Timeline line -->
+                    <div class="absolute left-4 md:left-1/2 h-full w-0.5 bg-green-400 transform -translate-x-1/2"></div>
+                    
+                    <!-- Timeline items -->
+                    <div class="space-y-12">
+                        <!-- Item 1 -->
+                        <div class="relative mission-card pl-10 md:pl-0 md:flex justify-center" onmouseenter="playHoverSound()">
+                            <div class="md:w-5/12 md:pr-10 md:text-right">
+                                <h3 class="text-xl font-bold text-green-400"> UX/Graphic Designer</h3>
+                                <p class="text-gray-400">Crystal Frozen</p>
+                                <p class="text-sm text-gray-500">2025 </p>
+                            </div>
+                            <div class="hidden md:block w-8 h-8 rounded-full bg-green-400 absolute left-1/2 transform -translate-x-1/2 mt-2"></div>
+                            <div class="md:w-5/12 md:pl-10 mt-4 md:mt-0">
+                                <p class="text-gray-300">
+                                    Created seamless expereinces and posters for their chill foods and wines.
+                                </p>
+                            </div>
+                        </div>
+                        
+                        <!-- Item 2 -->
+                        <div class="relative mission-card pl-10 md:pl-0 md:flex justify-center" onmouseenter="playHoverSound()">
+                            <div class="md:w-5/12 md:pr-10 md:text-right order-2">
+                                <h3 class="text-xl font-bold text-green-400">Lead UX Designer</h3>
+                                <p class="text-gray-400">swarm Initiative</p>
+                                <p class="text-sm text-gray-500">2025</p>
+                            </div>
+                            <div class="hidden md:block w-8 h-8 rounded-full bg-green-400 absolute left-1/2 transform -translate-x-1/2 mt-2"></div>
+                            <div class="md:w-5/12 md:pl-10 mt-4 md:mt-0 order-1">
+                                <p class="text-gray-300">
+                                    Redesigned the swarm Initiative Web page and improved user experience.
+                                </p>
+                            </div>
+                        </div>
+                        
+                        <!-- Item 3 -->
+                        <div class="relative mission-card pl-10 md:pl-0 md:flex justify-center" onmouseenter="playHoverSound()">
+                            <div class="md:w-5/12 md:pr-10 md:text-right">
+                                <h3 class="text-xl font-bold text-green-400">Google UX Design Certificate</h3>
+                                <p class="text-gray-400">Coursera</p>
+                                <p class="text-sm text-gray-500">2023-2024</p>
+                            </div>
+                            <div class="hidden md:block w-8 h-8 rounded-full bg-green-400 absolute left-1/2 transform -translate-x-1/2 mt-2"></div>
+                            <div class="md:w-5/12 md:pl-10 mt-4 md:mt-0">
+                                <p class="text-gray-300">
+                                    Completed UX Design and No-Code Development courses on platforms like Coursera to strengthen practical skills in design thinking, user research, and interface design.
+                                </p>
+                            </div>
+                        </div>
+                        
+                        <!-- Item 4 -->
+                        <div class="relative mission-card pl-10 md:pl-0 md:flex justify-center" onmouseenter="playHoverSound()">
+                            <div class="md:w-5/12 md:pr-10 md:text-right order-2">
+                                <h3 class="text-xl font-bold text-green-400">Computer Science</h3>
+                                <p class="text-gray-400">KCA University</p>
+                                <p class="text-sm text-gray-500">2022 - Paused</p>
+                            </div>
+                            <div class="hidden md:block w-8 h-8 rounded-full bg-green-400 absolute left-1/2 transform -translate-x-1/2 mt-2"></div>
+                            <div class="md:w-5/12 md:pl-10 mt-4 md:mt-0 order-1">
+                                <p class="text-gray-300">
+                                    I began studying Computer Science at KCA University, where I developed a strong foundation in technology, design thinking, and digital tools before transitioning fully into UX design and no-code development.
+
+                                                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+      <!-- Replace your existing contact section with this: -->
+<section id="contact" class="py-20 px-4 md:px-10 lg:px-20">
+    <div class="max-w-4xl mx-auto">
+        <h2 class="text-3xl md:text-4xl font-bold mb-12 text-center glow-text pixel-font">// CONTACT GUILD</h2>
+
+        <div class="panel p-8 rounded-lg">
+            <form id="contactForm" class="space-y-6">
+                <div>
+                    <label for="name" class="block text-sm font-medium text-green-400 mb-2">YOUR CALL SIGN</label>
+                    <input type="text" id="name" name="name" class="w-full px-4 py-3 rounded" required>
+                </div>
+
+                <div>
+                    <label for="email" class="block text-sm font-medium text-green-400 mb-2">TRANSMISSION FREQUENCY</label>
+                    <input type="email" id="email" name="email" class="w-full px-4 py-3 rounded" required>
+                </div>
+
+                <div>
+                    <label for="subject" class="block text-sm font-medium text-green-400 mb-2">MISSION TYPE</label>
+                    <select id="subject" name="subject" class="w-full px-4 py-3 rounded bg-gray-900">
+                        <option value="work">Work Opportunity</option>
+                        <option value="collab">Collaboration</option>
+                        <option value="question">Question</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label for="message" class="block text-sm font-medium text-green-400 mb-2">MESSAGE</label>
+                    <textarea id="message" name="message" rows="5" class="w-full px-4 py-3 rounded" required></textarea>
+                </div>
+
+                <button type="submit" class="btn-primary px-8 py-3 rounded-full text-lg font-bold w-full" onclick="playClickSound()">
+                    SEND TRANSMISSION
+                </button>
+            </form>
+            <div id="formSuccess" class="hidden mt-4 p-4 bg-green-900 rounded-lg text-center">
+                <p class="text-green-400">📡 Transmission successful! Message received.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Update your JavaScript with this form handling code: -->
+<script>
+    // Form submission with Fetch API
+    document.getElementById('contactForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        // Play success sound
+        playAISuccess();
+        
+        // Show success message
+        document.getElementById('formSuccess').classList.remove('hidden');
+        showAINotification('📡 Transmission successful! Message received.', 5000);
+        
+        // Get form data
+        const formData = new FormData(this);
+        const object = {};
+        formData.forEach((value, key) => object[key] = value);
+        
+        // Send to FormSubmit
+        fetch('https://formspree.io/f/movwgpzd', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
+            },
+            body: JSON.stringify(object)
+        })
+        .then(response => response.json())
+        .then(data => console.log(data))
+        .catch(error => console.log(error));
+        
+        // Reset form
+        this.reset();
+    });
+</script>
+
+        <!-- Footer -->
+        <footer class="py-12 px-4 md:px-10 lg:px-20 bg-black">
+            <div class="max-w-6xl mx-auto">
+                <div class="flex flex-col md:flex-row justify-between items-center">
+                    <div class="mb-6 md:mb-0">
+                        <h3 class="text-xl font-bold text-green-400 mb-2">Elias Mwangi</h3>
+                        <p class="text-gray-400">UX Designer & Digital Craftsman</p>
+                    </div>
+                    
+                    <div class="flex space-x-6">
+                        <a href="https://www.linkedin.com/in/elias-mwangi-70a091301/" target="_blank"
+                        class="text-gray-400 hover:text-green-400 transition" onmouseenter="playHoverSound()">LinkedIn</a>
+                        <a href="https://www.behance.net/eliasmwangi2" target="_blank"
+                        class="text-gray-400 hover:text-green-400 transition" onmouseenter="playHoverSound()">Behance</a>
+                        <a href="https://x.com/MinionMwan58986" target="_blank"
+                        class="text-gray-400 hover:text-green-400 transition" onmouseenter="playHoverSound()">Twitter</a>
+                    </div>
+                </div>
+                
+                <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-500 text-sm">
+                    <p class="pixel-font">© 2025 Elias Mwangi. All rights .</p>
+                    <p class="mt-2 pixel-font">Designed and coded in Fedha, Nairobi</p>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        // Sound effects
+        function playHoverSound() {
+            const hoverSound = document.getElementById('hoverSound');
+            hoverSound.currentTime = 0;
+            hoverSound.play();
+        }
+        
+        function playClickSound() {
+            const clickSound = document.getElementById('clickSound');
+            clickSound.currentTime = 0;
+            clickSound.play();
+        }
+        
+        // AI Sound effects
+        function playAIStartup() {
+            const sound = document.getElementById('aiStartup');
+            sound.currentTime = 0;
+            sound.play();
+        }
+        
+        function playAINotification() {
+            const sound = document.getElementById('aiNotification');
+            sound.currentTime = 0;
+            sound.play();
+        }
+        
+        function playAISuccess() {
+            const sound = document.getElementById('aiSuccess');
+            sound.currentTime = 0;
+            sound.play();
+        }
+        
+        function playAIError() {
+            const sound = document.getElementById('aiError');
+            sound.currentTime = 0;
+            sound.play();
+        }
+        
+        // Show AI notification
+        function showAINotification(message, duration = 3000) {
+            const notification = document.getElementById('aiNotificationBox');
+            const messageElement = document.getElementById('aiMessage');
+            
+            messageElement.textContent = message;
+            notification.classList.add('active');
+            playAINotification();
+            
+            setTimeout(() => {
+                notification.classList.remove('active');
+            }, duration);
+        }
+        
+        // Background music toggle
+        function toggleMusic() {
+            const bgMusic = document.getElementById('bgMusic');
+            const musicIcon = document.getElementById('musicIcon');
+            
+            if (bgMusic.paused) {
+                bgMusic.play();
+                musicIcon.textContent = '🔊';
+                showAINotification('Audio systems online');
+            } else {
+                bgMusic.pause();
+                musicIcon.textContent = '🔇';
+                showAINotification('Audio systems muted');
+            }
+        }
+        
+        // Start button functionality
+        document.getElementById('startBtn').addEventListener('click', function() {
+            const mainContent = document.getElementById('mainContent');
+            const startSection = document.getElementById('start');
+            
+            startSection.classList.add('hidden');
+            mainContent.classList.remove('hidden');
+            
+            // Scroll to top
+            window.scrollTo(0, 0);
+            
+            // Play background music and AI startup sound
+            playAIStartup();
+            setTimeout(() => {
+                toggleMusic();
+                showAINotification('Systems initialized. Welcome, player');
+            }, 1000);
+        });
+        
+        // Smooth scrolling for navigation
+        function scrollToSection(sectionId) {
+            if (sectionId === 'start') {
+                // If going home, show the start screen and hide main content
+                document.getElementById('start').classList.remove('hidden');
+                document.getElementById('mainContent').classList.add('hidden');
+                // Play AI sound
+                playAINotification();
+            } else {
+                const section = document.getElementById(sectionId);
+                if (section) {
+                    window.scrollTo({
+                        top: section.offsetTop,
+                        behavior: 'smooth'
+                    });
+                    showAINotification(`Navigating to ${sectionId} section`);
+                }
+            }
+        }
+        
+        // Form submission
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Show success message
+            playAISuccess();
+            showAINotification('📡 Transmission successful! Message received.', 5000);
+            
+            // Submit the form after a delay
+            setTimeout(() => {
+                this.submit();
+            }, 1000);
+        });
+        
+        // Highlight active section in navigation
+        window.addEventListener('scroll', function() {
+            const sections = ['start', 'quests', 'profile', 'inventory', 'missions', 'contact'];
+            const scrollPosition = window.scrollY + 100;
+            
+            sections.forEach(section => {
+                const element = document.getElementById(section);
+                if (element) {
+                    const offsetTop = element.offsetTop;
+                    const offsetHeight = element.offsetHeight;
+                    
+                    if (scrollPosition >= offsetTop && scrollPosition < offsetTop + offsetHeight) {
+                        // Remove active class from all nav items
+                        document.querySelectorAll('.joystick-btn').forEach(btn => {
+                            btn.classList.remove('bg-green-400', 'text-black');
+                        });
+                        
+                        // Add active class to corresponding nav item
+                        const navItem = document.querySelector(`.joystick-btn[onclick="scrollToSection('${section}')"]`);
+                        if (navItem) {
+                            navItem.classList.add('bg-green-400', 'text-black');
+                        }
+                    }
+                }
+            });
+        });
+
+        // Show initial AI notification
+        setTimeout(() => {
+            showAINotification('System booting up...', 3000);
+        }, 1000);
+    </script>
+</body>
+</html>

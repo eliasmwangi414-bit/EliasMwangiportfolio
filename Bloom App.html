@@ -1,0 +1,699 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bloom App Case Study | UX Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root {
+      --primary: #ec407a;
+      --secondary: #f48fb1;
+      --dark: #0d0d0d;
+      --darker: #1a1a1a;
+      --light: #fce4ec;
+      --accent: #ff80ab;
+      --gradient: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+    }
+    body {
+            font-family: 'Orbitron', sans-serif;
+            background-color: var(--dark-bg);
+            color: white;
+            cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16'><circle cx='8' cy='8' r='6' fill='none' stroke='%23ec407a' stroke-width='2'/><circle cx='8' cy='8' r='2' fill='%23ec407a'/></svg>"), auto;
+            overflow-x: hidden;
+        }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Roboto', sans-serif;
+      background-color: var(--dark);
+      color: var(--light);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+    
+    /* Header Styles */
+    header {
+      text-align: center;
+      padding: 100px 20px;
+      background: var(--gradient);
+      color: var(--dark);
+      position: relative;
+      margin-bottom: 60px;
+      overflow: hidden;
+    }
+    
+    header::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><circle cx="50" cy="50" r="40" fill="none" stroke="white" stroke-width="2" stroke-opacity="0.1"/></svg>');
+      opacity: 0.2;
+    }
+    
+    .back-button {
+      position: absolute;
+      top: 30px;
+      left: 30px;
+      color: var(--dark);
+      font-size: 1.1rem;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      z-index: 10;
+      transition: transform 0.3s ease;
+    }
+    
+    .back-button:hover {
+      transform: translateX(-5px);
+    }
+    
+    header h1 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 2.8rem;
+      margin-bottom: 15px;
+      position: relative;
+      text-shadow: 0 2px 10px rgba(0,0,0,0.2);
+    }
+    
+    header p {
+      font-size: 1.2rem;
+      max-width: 700px;
+      margin: 0 auto 20px;
+      position: relative;
+    }
+    
+    .project-meta {
+      display: flex;
+      justify-content: center;
+      gap: 25px;
+      margin-top: 25px;
+      flex-wrap: wrap;
+      position: relative;
+    }
+    
+    .meta-item {
+      background: rgba(0,0,0,0.2);
+      padding: 10px 20px;
+      border-radius: 50px;
+      font-size: 0.95rem;
+    }
+    
+    /* Container Styles */
+    .container {
+      padding: 0 30px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    
+    /* Section Styles */
+    .section {
+      margin-bottom: 100px;
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+    
+    .section.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    
+    .section h2 {
+      font-family: 'Orbitron', sans-serif;
+      color: var(--accent);
+      margin-bottom: 30px;
+      font-size: 2rem;
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+    
+    .section h3 {
+      font-size: 1.4rem;
+      margin: 35px 0 20px;
+      color: var(--secondary);
+    }
+    
+    .section p, .section li {
+      margin-bottom: 18px;
+      font-size: 1.1rem;
+      color: rgba(252, 228, 236, 0.9);
+    }
+    
+    .section ul {
+      padding-left: 25px;
+      margin-bottom: 30px;
+    }
+    
+    .section li {
+      margin-bottom: 12px;
+      position: relative;
+      list-style-type: none;
+      padding-left: 25px;
+    }
+    
+    .section li::before {
+      content: "▹";
+      color: var(--secondary);
+      position: absolute;
+      left: 0;
+    }
+    
+    /* Image Styles */
+    .image-container {
+      width: 100%;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+      background: var(--darker);
+      margin: 25px 0;
+      position: relative;
+      transition: transform 0.3s ease;
+    }
+    
+    .image-container:hover {
+      transform: translateY(-5px);
+    }
+    
+    .image-container img {
+      width: 100%;
+      height: auto;
+      display: block;
+      transition: transform 0.5s ease;
+    }
+    
+    .image-container:hover img {
+      transform: scale(1.03);
+    }
+    
+    .image-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 25px;
+      margin: 35px 0;
+    }
+    
+    /* Special Elements */
+    .highlight-box {
+      background: rgba(236, 64, 122, 0.15);
+      border-left: 4px solid var(--primary);
+      padding: 25px;
+      margin: 35px 0;
+      border-radius: 0 12px 12px 0;
+      transition: transform 0.3s ease;
+    }
+    
+    .highlight-box:hover {
+      transform: translateX(5px);
+    }
+    
+    .quote {
+      font-style: italic;
+      padding: 0 35px;
+      margin: 30px 0;
+      font-size: 1.2rem;
+      color: var(--secondary);
+      line-height: 1.7;
+      position: relative;
+    }
+    
+    .quote::before,
+    .quote::after {
+      content: '"';
+      font-size: 3rem;
+      color: var(--secondary);
+      position: absolute;
+      opacity: 0.3;
+    }
+    
+    .quote::before {
+      top: -20px;
+      left: 0;
+    }
+    
+    .quote::after {
+      bottom: -40px;
+      right: 0;
+    }
+    
+    /* Process Steps */
+    .process-steps {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 25px;
+      margin: 40px 0;
+    }
+    
+    .process-step {
+      background: var(--darker);
+      padding: 25px;
+      border-radius: 10px;
+      border-top: 4px solid var(--primary);
+      transition: transform 0.3s ease;
+    }
+    
+    .process-step:hover {
+      transform: translateY(-5px);
+    }
+    
+    .process-step h4 {
+      font-size: 1.2rem;
+      margin-bottom: 15px;
+      color: var(--accent);
+    }
+    
+    /* Prototype Container */
+    .prototype-container {
+      width: 100%;
+      border-radius: 12px;
+      overflow: hidden;
+      margin: 40px 0;
+      box-shadow: 0 15px 40px rgba(0,0,0,0.4);
+      position: relative;
+    }
+    
+    /* Next Project Link */
+    .next-project {
+      text-align: center;
+      margin: 80px 0;
+    }
+    
+    .next-project a {
+      display: inline-block;
+      padding: 16px 32px;
+      background: var(--gradient);
+      color: var(--dark);
+      font-family: 'Orbitron', sans-serif;
+      font-weight: bold;
+      text-decoration: none;
+      border-radius: 50px;
+      font-size: 1.1rem;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 20px rgba(236, 64, 122, 0.4);
+    }
+    
+    .next-project a:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 25px rgba(236, 64, 122, 0.6);
+    }
+    
+    /* Footer Styles */
+    footer {
+      text-align: center;
+      padding: 70px 20px;
+      font-size: 1rem;
+      color: rgba(252, 228, 236, 0.6);
+      border-top: 1px solid rgba(236, 64, 122, 0.2);
+    }
+    
+    /* Animation Classes */
+    .delay-1 { transition-delay: 0.2s !important; }
+    .delay-2 { transition-delay: 0.4s !important; }
+    .delay-3 { transition-delay: 0.6s !important; }
+    
+    /* Responsive Styles */
+    @media (max-width: 900px) {
+      header {
+        padding: 80px 20px;
+      }
+      
+      header h1 {
+        font-size: 2.3rem;
+      }
+      
+      .section h2 {
+        font-size: 1.8rem;
+      }
+    }
+    
+    @media (max-width: 600px) {
+      header {
+        padding: 70px 20px 50px;
+      }
+      
+      header h1 {
+        font-size: 2rem;
+      }
+      
+      header p {
+        font-size: 1rem;
+      }
+      
+      .project-meta {
+        gap: 15px;
+      }
+      
+      .meta-item {
+        padding: 8px 16px;
+        font-size: 0.9rem;
+      }
+      
+      .container {
+        padding: 0 20px;
+      }
+      
+      .section {
+        margin-bottom: 70px;
+      }
+      
+      .section h2 {
+        font-size: 1.6rem;
+      }
+      
+      .image-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <a href="index.html" class="back-button">
+    <i class="fas fa-arrow-left"></i> Back to Portfolio
+  </a>
+  <h1>Bloom App</h1>
+  <p>A gamified habit tracker designed to nurture your mind, one day at a time.</p>
+  
+  <div class="project-meta">
+    <div class="meta-item"><i class="fas fa-user"></i> UX/UI Design</div>
+    <div class="meta-item"><i class="fas fa-calendar"></i> 3 Months</div>
+    <div class="meta-item"><i class="fas fa-cogs"></i> Figma, Illustrator</div>
+  </div>
+</header>
+
+<div class="container">
+
+  <!-- Project Overview -->
+  <section class="section">
+    <h2><i class="fas fa-lightbulb"></i> Project Overview</h2>
+    <p>Bloom is a mental wellness app that transforms boring routines into a joyful, game-like experience. The idea emerged from a need to make daily self-care, mood tracking, and mental health habits less clinical and more emotionally engaging.</p>
+    
+    <div class="highlight-box">
+      <h3>Project Goals</h3>
+      <ul>
+        <li>Increase user engagement with mental health tracking</li>
+        <li>Reduce abandonment rates after initial use</li>
+        <li>Create an emotionally rewarding experience</li>
+        <li>Make self-care feel like personal growth</li>
+      </ul>
+    </div>
+    
+    <div class="image-container">
+      <img src="images/Nokia XR21.svg" alt="Bloom App main interface showing garden growth visualization">
+    </div>
+  </section>
+
+  <!-- The Challenge -->
+  <section class="section delay-1">
+    <h2><i class="fas fa-bullseye"></i> The Challenge</h2>
+    <p>Traditional habit trackers often fail to maintain user engagement because they feel like chores rather than rewarding experiences. Through preliminary research, I identified three key pain points:</p>
+    
+    <div class="process-steps">
+      <div class="process-step">
+        <h4>1. Lack of Emotional Connection</h4>
+        <p>Users didn't feel personally invested in generic tracking systems</p>
+      </div>
+      <div class="process-step">
+        <h4>2. Overwhelming Complexity</h4>
+        <p>Too many options led to decision fatigue and abandonment</p>
+      </div>
+      <div class="process-step">
+        <h4>3. No Visual Progress</h4>
+        <p>Number-based systems didn't provide satisfying feedback</p>
+      </div>
+    </div>
+    
+    <div class="quote">
+      "I've tried every habit tracker out there, but none make me actually want to come back. They all feel like another item on my to-do list." — User Interview
+    </div>
+    
+    <div class="image-container">
+      <img src="images/depositphotos_560210270-stock-photo-frustrated-mother-arguing-kids-children.jpg" alt="Illustration showing people struggling with habit tracking apps">
+    </div>
+  </section>
+
+  <!-- User Research -->
+  <section class="section delay-2">
+    <h2><i class="fas fa-search"></i> User Research</h2>
+    <p>I conducted extensive research with our target demographic (ages 18-35) to understand their needs and frustrations with existing solutions.</p>
+    
+    <h3>Research Methods</h3>
+    <ul>
+      <li>12 in-depth user interviews</li>
+      <li>Survey with 150+ respondents</li>
+      <li>Competitive analysis of 8 leading apps</li>
+      <li>Diary study with 5 participants</li>
+    </ul>
+    
+    <h3>Key Findings</h3>
+    <ul>
+      <li>92% wanted more visual feedback on progress</li>
+      <li>78% abandoned habit apps within 2 weeks</li>
+      <li>65% preferred gamified elements over plain tracking</li>
+      <li>Users responded strongly to growth metaphors</li>
+    </ul>
+    
+    <div class="image-grid">
+      <div class="image-container">
+        <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1471&q=80" alt="Affinity mapping session with sticky notes">
+      </div>
+      <div class="image-container">
+        <img src="https://images.unsplash.com/photo-1521791136064-7986c2920216?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1469&q=80" alt="User interview in progress">
+      </div>
+    </div>
+  </section>
+
+  <!-- Design Process -->
+  <section class="section delay-3">
+    <h2><i class="fas fa-project-diagram"></i> Design Process</h2>
+    <p>The design evolved through multiple iterations based on continuous user feedback.</p>
+    
+    <div class="process-steps">
+      <div class="process-step">
+        <h4>1. Discovery</h4>
+        <p>User interviews, competitive analysis, problem framing</p>
+        <div class="image-container" style="margin-top:15px;">
+          <img src="images/istockphoto-1483272796-612x612.jpg" alt="Discovery phase artifacts">
+        </div>
+      </div>
+      <div class="process-step">
+        <h4>2. Ideation</h4>
+        <p>Brainstorming, concept development, early sketches</p>
+        <div class="image-container" style="margin-top:15px;">
+          <img src="images/wf.jpg" alt="Early concept sketches">
+        </div>
+      </div>
+      <div class="process-step">
+        <h4>3. Prototyping</h4>
+        <p>Wireframes, interactive prototypes, usability testing</p>
+        <div class="image-container" style="margin-top:15px;">
+          <img src="images/Screenshot 2025-07-14 002158.png" alt="Prototyping process">
+        </div>
+      </div>
+      <div class="process-step">
+        <h4>4. Refinement</h4>
+        <p>Visual design, microinteractions, design system</p>
+        <div class="image-container" style="margin-top:15px;">
+          <img src="images/Rectangle.png" alt="Design refinement process">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Wireframes -->
+  <section class="section">
+    <h2><i class="fas fa-pencil-ruler"></i> Wireframes & UX Flow</h2>
+    <p>Initial sketches focused on core user journeys with an emphasis on emotional engagement.</p>
+    
+    <div class="image-grid">
+      <div class="image-container">
+        <img src="images/WhatsApp Image 2025-07-12 at 21.37.43_a33db18f.jpg" alt="Onboarding flow wireframe">
+      </div>
+      <div class="image-container">
+        <img src="images/wf.jpg" alt="Garden view wireframe">
+      </div>
+      <div class="image-container">
+        <img src="images/WhatsApp Image 2025-07-13 at 07.58.33_8ebbb2c2.jpg" alt="Habit tracking wireframe">
+      </div>
+      <div class="image-container">
+        <img src="images/WhatsApp Image 2025-07-12 at 21.41.18_95134b34.jpg" alt="Reflection screen wireframe">
+      </div>
+    </div>
+    
+    <h3>Key Screens</h3>
+    <ul>
+      <li><strong>Morning Check-In:</strong> Quick emotional state assessment</li>
+      <li><strong>Garden View:</strong> Central hub showing progress</li>
+      <li><strong>Habit Customization:</strong> Personalized routine setup</li>
+      <li><strong>Reflection Mode:</strong> Evening review process</li>
+    </ul>
+    
+    <div class="highlight-box">
+      <p>Early testing revealed users wanted more customization options, leading to a revised flow with expanded personalization.</p>
+      <div class="image-container" style="margin-top:15px;">
+        <img src="images/Frame 10.svg" alt="Design iteration process">
+      </div>
+    </div>
+  </section>
+
+  <!-- UI Design -->
+  <section class="section delay-1">
+    <h2><i class="fas fa-palette"></i> UI Design & Branding</h2>
+    <p>The visual design combines soft organic shapes with playful digital elements to create an inviting yet tech-forward aesthetic.</p>
+    
+    <h3>Design System</h3>
+    <ul>
+      <li><strong>Color:</strong> Warm pinks with digital teal accents</li>
+      <li><strong>Typography:</strong> Rounded sans-serif for readability</li>
+      <li><strong>Icons:</strong> Custom pixel-art style</li>
+      <li><strong>Motion:</strong> Subtle animations for feedback</li>
+    </ul>
+    
+    <div class="quote">
+      "The visual style makes me feel calm but also excited to use it - like I'm nurturing something precious." — User Testing Feedback
+    </div>
+    
+    <div class="image-grid">
+      <div class="image-container">
+        <img src="images/My secrets.svg" alt="Color palette and style guide">
+      </div>
+      <div class="image-container">
+        <img src="images/vault.svg" alt="Typography system">
+      </div>
+      <div class="image-container">
+        <img src="images/favourite.svg" alt="Custom icon set">
+      </div>
+      <div class="image-container">
+        <img src="images/Journal.svg" alt="UI components library">
+      </div>
+    </div>
+  </section>
+
+  <!-- Interactive Prototype -->
+  <section class="section delay-2">
+    <h2><i class="fas fa-mobile-alt"></i> Interactive Prototype</h2>
+    <p>Explore the clickable prototype demonstrating key user flows and interactions.</p>
+    
+    <div class="prototype-container">
+      <img src="images/Screenshot 2025-07-14 002158.png" alt="High fidelity prototype screens" style="width:100%;">
+    </div>
+    
+    <div class="highlight-box">
+      <h3>Key Interactions</h3>
+      <ul>
+        <li>Animated transitions between screens</li>
+        <li>Microinteractions for habit completion</li>
+        <li>Dynamic garden growth visualization</li>
+        <li>Mood selection with haptic feedback</li>
+      </ul>
+      <div class="image-container" style="margin-top:15px;">
+        <img src="images/Frame 12.svg" alt="Interaction demo animation">
+      </div>
+    </div>
+  </section>
+
+  <!-- Testing & Results -->
+  <section class="section delay-3">
+    <h2><i class="fas fa-chart-line"></i> Testing & Results</h2>
+    <p>The prototype underwent three rounds of usability testing with iterative improvements.</p>
+    
+    <h3>Key Improvements</h3>
+    <ul>
+      <li>Simplified onboarding from 5 steps to 3</li>
+      <li>Added more emotion options</li>
+      <li>Enhanced garden growth animations</li>
+      <li>Improved empty states</li>
+    </ul>
+    
+    <div class="highlight-box">
+      <h3>Quantitative Results</h3>
+      <ul>
+        <li><strong>68%</strong> retention after 30 days (vs industry avg 40%)</li>
+        <li><strong>4.8/5</strong> average enjoyment rating</li>
+        <li><strong>92%</strong> said they would recommend to friends</li>
+      </ul>
+      <div class="image-container" style="margin-top:15px;">
+        <img src="images/Joyous Women in Summer Attire.png" alt="Results infographic">
+      </div>
+    </div>
+
+  </section>
+  
+  <!-- Next Steps -->
+  <section class="section">
+    <h2><i class="fas fa-rocket"></i> Next Steps</h2>
+    <p>Future development plans based on user feedback and business goals.</p>
+    
+    <ul>
+      <li><strong>AI Suggestions:</strong> Personalized habit recommendations</li>
+      <li><strong>Community Features:</strong> Shared gardens and challenges</li>
+      <li><strong>AR Mode:</strong> View your garden in physical space</li>
+      <li><strong>Exportable Reports:</strong> For therapy or self-reflection</li>
+    </ul>
+    
+    <div class="image-grid">
+      <div class="image-container">
+        <img src="images/Woman in Red Data Glow.png" alt="AI suggestion concept">
+      </div>
+      <div class="image-container">
+        <img src="images/AI Breathing Exercise Suggestion.png" alt="Community feature mockup">
+      </div>
+    </div>
+  </section>
+
+  <!-- Next Project Link -->
+  <div class="next-project">
+    <a href="crystalfrozen.html">View Next Project →</a>
+  </div>
+
+</div>
+
+<footer>
+  <p>© 2025 Elias Chege Mwangi – UI/UX Designer</p>
+</footer>
+
+<script>
+  // Scroll animations
+  document.addEventListener('DOMContentLoaded', function() {
+    const fadeElements = document.querySelectorAll('.section');
+    
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, {
+      threshold: 0.1,
+      rootMargin: '0px 0px -100px 0px'
+    });
+    
+    fadeElements.forEach(element => {
+      observer.observe(element);
+    });
+    
+    // Add hover effects to all interactive elements
+    const interactiveElements = document.querySelectorAll(
+      '.back-button, .meta-item, .image-container, .highlight-box, .process-step, .next-project a'
+    );
+    
+    interactiveElements.forEach(el => {
+      el.style.transition = 'all 0.3s ease';
+    });
+  });
+</script>
+
+</body>
+</html>
