@@ -244,6 +244,10 @@
     <audio id="aiError" src="https://assets.mixkit.co/sfx/preview/mixkit-sci-fi-negative-914.mp3" preload="auto"></audio>
 
     <!-- AI Notification -->
+    <div id="aiNotificationBox" class="ai-notification">
+        <span class="ai-icon">🤖</span>
+        <span id="aiMessage"></span>
+    </div>
     
     <!-- Start Screen -->
     <section id="start" class="min-h-screen flex flex-col items-center justify-center p-4 relative overflow-hidden">
@@ -295,8 +299,8 @@
                 START MISSION
             </button>
             
-            
- 
+           
+        </div>
     </section>
 
     <!-- Main Content (hidden until start) -->
@@ -479,7 +483,7 @@
         <!-- Inventory -->
         <section id="inventory" class="py-20 px-4 md:px-10 lg:px-20">
             <div class="max-w-6xl mx-auto">
-                <h2 class="text-3xl md:text-4xl font-bold mb-12 text-center glow-text pixel-font" INVENTORY</h2>
+                <h2 class="text-3xl md:text-4xl font-bold mb-12 text-center glow-text pixel-font">INVENTORY</h2>
                 
                 <h3 class="text-xl font-bold mb-6 text-green-400">TOOLS & TECHNOLOGIES</h3>
                 <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6 mb-12">
@@ -620,134 +624,56 @@
                             <div class="md:w-5/12 md:pl-10 mt-4 md:mt-0 order-1">
                                 <p class="text-gray-300">
                                     I began studying Computer Science at KCA University, where I developed a strong foundation in technology, design thinking, and digital tools before transitioning fully into UX design and no-code development.
-
-                                                            </div>
+                                </p>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
-      <!-- Replace your existing contact section with this: -->
-<!-- In your contact section -->
-<section id="contact" class="py-20 px-4 md:px-10 lg:px-20">
-    <div class="max-w-4xl mx-auto">
-        <h2 class="text-3xl md:text-4xl font-bold mb-12 text-center glow-text pixel-font">CONTACT GAME MASTER</h2>
- 
-        <div class="panel p-8 rounded-lg">
-            <form id="contactForm" class="space-y-6" action="https://formspree.io/f/movljzbz" method="POST">
-                <div>
-                    <label for="name" class="block text-sm font-medium text-green-400 mb-2"> NAME</label>
-                    <input type="text" id="name" name="name" class="w-full px-4 py-3 rounded" required>
+        <!-- Contact Section -->
+        <section id="contact" class="py-20 px-4 md:px-10 lg:px-20">
+            <div class="max-w-4xl mx-auto">
+                <h2 class="text-3xl md:text-4xl font-bold mb-12 text-center glow-text pixel-font">CONTACT GAME MASTER</h2>
+     
+                <div class="panel p-8 rounded-lg">
+                    <form id="contactForm" class="space-y-6">
+                        <div>
+                            <label for="name" class="block text-sm font-medium text-green-400 mb-2"> NAME</label>
+                            <input type="text" id="name" name="name" class="w-full px-4 py-3 rounded" required>
+                        </div>
+    
+                        <div>
+                            <label for="email" class="block text-sm font-medium text-green-400 mb-2">EMAIL</label>
+                            <input type="email" id="email" name="email" class="w-full px-4 py-3 rounded" required>
+                        </div>
+    
+                        <div>
+                            <label for="subject" class="block text-sm font-medium text-green-400 mb-2">MISSION TYPE</label>
+                            <select id="subject" name="subject" class="w-full px-4 py-3 rounded bg-gray-900">
+                                <option value="work">Work Opportunity</option>
+                                <option value="collab">Collaboration</option>
+                                <option value="question">Question</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+    
+                        <div>
+                            <label for="message" class="block text-sm font-medium text-green-400 mb-2">MESSAGE</label>
+                            <textarea id="message" name="message" rows="5" class="w-full px-4 py-3 rounded" required></textarea>
+                        </div>
+    
+                        <button type="submit" class="btn-primary px-8 py-3 rounded-full text-lg font-bold w-full" onclick="playClickSound()">
+                            SEND TRANSMISSION
+                        </button>
+                    </form>
+                    <div id="formSuccess" class="hidden mt-4 p-4 bg-green-900 rounded-lg text-center">
+                        <p class="text-green-400">📡 Transmission successful! Message received.</p>
+                    </div>
                 </div>
-
-                <div>
-                    <label for="email" class="block text-sm font-medium text-green-400 mb-2">EMAIL</label>
-                    <input type="email" id="email" name="email" class="w-full px-4 py-3 rounded" required>
-                </div>
-
-                <div>
-                    <label for="subject" class="block text-sm font-medium text-green-400 mb-2">MISSION TYPE</label>
-                    <select id="subject" name="subject" class="w-full px-4 py-3 rounded bg-gray-900">
-                        <option value="work">Work Opportunity</option>
-                        <option value="collab">Collaboration</option>
-                        <option value="question">Question</option>
-                        <option value="other">Other</option>
-                    </select>
-                </div>
-
-                <div>
-                    <label for="message" class="block text-sm font-medium text-green-400 mb-2">MESSAGE</label>
-                    <textarea id="message" name="message" rows="5" class="w-full px-4 py-3 rounded" required></textarea>
-                </div>
-
-                <button type="submit" class="btn-primary px-8 py-3 rounded-full text-lg font-bold w-full" onclick="playClickSound()">
-                    SEND TRANSMISSION
-                </button>
-            </form>
-            <div id="formSuccess" class="hidden mt-4 p-4 bg-green-900 rounded-lg text-center">
-                <p class="text-green-400">📡 Transmission successful! Message received.</p>
             </div>
-            <div id="formError" class="hidden mt-4 p-4 bg-red-900 rounded-lg text-center">
-                <p class="text-red-400">⚠️ Transmission failed. Please try again.</p>
-            </div>
-        </div>
-    </div>
-</section>
-<!-- Update your JavaScript with this form handling code: -->
-<script>
-    // Form submission with Fetch API
-    document.getElementById('contactForm').addEventListener('submit', function(e) {
-        e.preventDefault();
-        
-        // Play success sound
-        playAISuccess();
-        
-        // Show success message
-        document.getElementById('formSuccess').classList.remove('hidden');
-        showAINotification('📡 Transmission successful! Message received.', 5000);
-        
-        // Get form data
-        const formData = new FormData(this);
-        const object = {};
-        formData.forEach((value, key) => object[key] = value);
-        
-        // Send to FormSubmit
-    // Assuming you have a form with id="myForm"
-const form = document.getElementById('myForm');
-
-form.addEventListener('submit', function (e) {
-    e.preventDefault(); // Stop default form submit
-
-    const formData = new FormData(form);
-    const object = {};
-    formData.forEach((value, key) => {
-        object[key] = value;
-    });
-
-      document.getElementById('contactForm').addEventListener('submit', async function(e) {
-        e.preventDefault();
-        
-        const form = e.target;
-        const formData = new FormData(form);
-        
-        try {
-            const response = await fetch(form.action, {
-                method: 'POST',
-                body: formData,
-                headers: {
-                    'Accept': 'application/json'
-                }
-            });
-            
-            if (response.ok) {
-                // Show success message
-                playAISuccess();
-                document.getElementById('formSuccess').classList.remove('hidden');
-                document.getElementById('formError').classList.add('hidden');
-                showAINotification('📡 Transmission successful! Message received.', 5000);
-                
-                // Reset form
-                form.reset();
-                
-                // Hide success message after 5 seconds
-                setTimeout(() => {
-                    document.getElementById('formSuccess').classList.add('hidden');
-                }, 5000);
-            } else {
-                throw new Error('Form submission failed');
-            }
-        } catch (error) {
-            // Show error message
-            playAIError();
-            document.getElementById('formError').classList.remove('hidden');
-            document.getElementById('formSuccess').classList.add('hidden');
-            showAINotification('⚠️ Transmission failed. Please try again.', 5000);
-            
-            console.error('Error:', error);
-        }
-    });
-</script>
+        </section>
 
         <!-- Footer -->
         <footer class="py-12 px-4 md:px-10 lg:px-20 bg-black">
@@ -789,14 +715,7 @@ form.addEventListener('submit', function (e) {
             clickSound.currentTime = 0;
             clickSound.play();
         }
-      
-  function disableInspect(e) {
-    if (e.ctrlKey && e.shiftKey && (e.key === 'I' || e.key === 'J')) return false; // Ctrl+Shift+I/J
-    if (e.ctrlKey && e.key === 'U') return false; // Ctrl+U
-    return true;
-  }
-
-
+        
         // AI Sound effects
         function playAIStartup() {
             const sound = document.getElementById('aiStartup');
@@ -896,13 +815,17 @@ form.addEventListener('submit', function (e) {
             e.preventDefault();
             
             // Show success message
+            document.getElementById('formSuccess').classList.remove('hidden');
             playAISuccess();
             showAINotification('📡 Transmission successful! Message received.', 5000);
             
-            // Submit the form after a delay
+            // Reset form
+            this.reset();
+            
+            // Hide success message after 5 seconds
             setTimeout(() => {
-                this.submit();
-            }, 1000);
+                document.getElementById('formSuccess').classList.add('hidden');
+            }, 5000);
         });
         
         // Highlight active section in navigation
@@ -940,4 +863,4 @@ form.addEventListener('submit', function (e) {
 <body oncontextmenu="return false" onkeydown="return disableInspect(event)">
 </body>
 </body>
-</html>
+</html> 
