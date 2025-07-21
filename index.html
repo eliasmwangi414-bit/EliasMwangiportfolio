@@ -690,21 +690,41 @@
         formData.forEach((value, key) => object[key] = value);
         
         // Send to FormSubmit
-        fetch('https://formspree.io/f/movljzbz', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'Accept': 'application/json'
-            },
-            body: JSON.stringify(object)
-        })
-        .then(response => response.json())
-        .then(data => console.log(data))
-        .catch(error => console.log(error));
-        
-        // Reset form
-        this.reset();
+    // Assuming you have a form with id="myForm"
+const form = document.getElementById('myForm');
+
+form.addEventListener('submit', function (e) {
+    e.preventDefault(); // Stop default form submit
+
+    const formData = new FormData(form);
+    const object = {};
+    formData.forEach((value, key) => {
+        object[key] = value;
     });
+
+    fetch('https://formspree.io/f/movljzbz', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+        },
+        body: JSON.stringify(object)
+    })
+    .then(response => {
+        if (response.ok) {
+            alert("Message sent!");
+            form.reset(); // ✅ Reset the form
+        } else {
+            alert("Failed to send message.");
+        }
+        return response.json();
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        alert("An error occurred.");
+    });
+});
+
 </script>
 
         <!-- Footer -->
