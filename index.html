@@ -747,7 +747,14 @@
             clickSound.currentTime = 0;
             clickSound.play();
         }
-        
+      
+  function disableInspect(e) {
+    if (e.ctrlKey && e.shiftKey && (e.key === 'I' || e.key === 'J')) return false; // Ctrl+Shift+I/J
+    if (e.ctrlKey && e.key === 'U') return false; // Ctrl+U
+    return true;
+  }
+
+
         // AI Sound effects
         function playAIStartup() {
             const sound = document.getElementById('aiStartup');
@@ -888,5 +895,7 @@
             showAINotification('System booting up...', 3000);
         }, 1000);
     </script>
+<body oncontextmenu="return false" onkeydown="return disableInspect(event)">
+</body>
 </body>
 </html>
