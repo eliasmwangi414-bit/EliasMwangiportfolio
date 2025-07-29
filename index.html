@@ -97,6 +97,7 @@
             background: rgba(20, 20, 20, 0.7);
             opacity: 1;
             transform: none;
+            
         }
         
         .project-card:hover {
@@ -313,7 +314,9 @@
             <div class="joystick-btn" onclick="scrollToSection('quests')" onmouseenter="playHoverSound()" title="Projects">
                 🎮
             </div>
-            
+            <div class="joystick-btn" onclick="scrollToSection('graphics')" onmouseenter="playHoverSound()" title="Graphics">
+                🎨
+            </div>
             <div class="joystick-btn" onclick="scrollToSection('profile')" onmouseenter="playHoverSound()" title="Profile">
                 👤
             </div>
@@ -420,9 +423,60 @@
                 </div>
             </div>
         </section>
+        
+        <!-- Graphics Design Section -->
+        <section id="graphics" class="py-20 px-4 md:px-10 lg:px-20 bg-gray-900">
+            <div class="max-w-6xl mx-auto">
+                <h2 class="text-3xl md:text-4xl font-bold mb-12 text-center glow-text pixel-font">GRAPHIC DESIGN WORK</h2>
+                
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <!-- Graphic Design Item 1 -->
+                    <div >
+                        <div>
+                            <img src="images/White Modern  Minimal  Parking Services Poster Template A3 - Made with PosterMyWall 1.svg" alt="Graphic Design 1" class="w-full h-full object-fit transition-transform duration-500 group-hover:scale-105">
+                        </div>
+                        
+                      
+                    </div>
+                    
+                  
+                    <!-- Graphic Design Item 3 -->
+                    <div>
+                        <div>
+                            <img src="images/Tortilla Wraps.jpg" alt="Graphic Design 3" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+                        </div>
+                        
+                    </div>
+                    
+                   
+                    
+                    <!-- Graphic Design Item 5 -->
+                    <div >
+                        <div>
+                            <img src="images/HAVEN POSTER 25TH.svg" alt="Graphic Design 5" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+                        </div>
+                       
+                    </div>
+                    
+                    <!-- Graphic Design Item 6 -->
+                    <div>
+                        <div>
+                            <img src="images/straw berry.jpg" alt="Graphic Design 6" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+                        </div>
+                        
+                    </div>
+                    
+                    
+                    
+                  
+                </div>
+                
+                
+            </div>
+        </section>
          
         <!-- Player Profile -->
-        <section id="profile" class="py-20 px-4 md:px-10 lg:px-20 bg-gray-900">
+        <section id="profile" class="py-20 px-4 md:px-10 lg:px-20">
             <div class="max-w-6xl mx-auto">
                 <h2 class="text-3xl md:text-4xl font-bold mb-12 text-center glow-text pixel-font">GAME MASTER PROFILE</h2>
                 
@@ -481,7 +535,7 @@
         </section>
 
         <!-- Inventory -->
-        <section id="inventory" class="py-20 px-4 md:px-10 lg:px-20">
+        <section id="inventory" class="py-20 px-4 md:px-10 lg:px-20 bg-gray-900">
             <div class="max-w-6xl mx-auto">
                 <h2 class="text-3xl md:text-4xl font-bold mb-12 text-center glow-text pixel-font">INVENTORY</h2>
                 
@@ -558,7 +612,7 @@
         </section>
 
         <!-- Mission Log -->
-        <section id="missions" class="py-20 px-4 md:px-10 lg:px-20 bg-gray-900">
+        <section id="missions" class="py-20 px-4 md:px-10 lg:px-20">
             <div class="max-w-6xl mx-auto">
                 <h2 class="text-3xl md:text-4xl font-bold mb-12 text-center glow-text pixel-font"> MISSION LOG</h2>
                 
@@ -634,7 +688,7 @@
 
         <!-- Contact Section -->
       <!-- Contact Section -->
-<section id="contact" class="py-20 px-4 md:px-10 lg:px-20">
+<section id="contact" class="py-20 px-4 md:px-10 lg:px-20 bg-gray-900">
     <div class="max-w-4xl mx-auto">
         <h2 class="text-3xl md:text-4xl font-bold mb-12 text-center glow-text pixel-font">CONTACT GAME MASTER</h2>
      
@@ -878,7 +932,7 @@ document.getElementById('contactForm').addEventListener('submit', async function
         
         // Highlight active section in navigation
         window.addEventListener('scroll', function() {
-            const sections = ['start', 'quests', 'profile', 'inventory', 'missions', 'contact'];
+            const sections = ['start', 'quests', 'graphics', 'profile', 'inventory', 'missions', 'contact'];
             const scrollPosition = window.scrollY + 100;
             
             sections.forEach(section => {
@@ -911,4 +965,4 @@ document.getElementById('contactForm').addEventListener('submit', async function
 <body oncontextmenu="return false" onkeydown="return disableInspect(event)">
 </body>
 </body>
-</html> 
+</html>
