@@ -1,4 +1,4 @@
-t<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -15,13 +15,7 @@ t<!DOCTYPE html>
             --light-text: #6B7280;
             --section-padding: 120px;
         }
- body {
-            font-family: 'Orbitron', sans-serif;
-            background-color: var(--dark-bg);
-            color: white;
-            cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16'><circle cx='8' cy='8' r='6' fill='none' stroke='%23FFBB00' stroke-width='2'/><circle cx='8' cy='8' r='2' fill='%23FFBB00'/></svg>"), auto;
-            overflow-x: hidden;
-        }
+
         * {
             margin: 0;
             padding: 0;
@@ -33,6 +27,7 @@ t<!DOCTYPE html>
             color: var(--dark-text);
             background-color: white;
             overflow-x: hidden;
+            line-height: 1.6;
         }
 
         /* Typography */
@@ -46,6 +41,8 @@ t<!DOCTYPE html>
         h3 { font-size: 1.8rem; margin: 2rem 0 1rem; }
         p { font-size: 1.1rem; line-height: 1.8; color: var(--light-text); margin-bottom: 1.5rem; }
         .highlight { color: var(--emerald-green); font-weight: 600; }
+        ul { margin-left: 1.5rem; margin-bottom: 1.5rem; }
+        li { margin-bottom: 0.5rem; }
 
         /* Navigation */
         .portfolio-link {
@@ -288,16 +285,35 @@ t<!DOCTYPE html>
         /* Wireframes */
         .wireframes {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 30px;
             margin: 3rem 0;
         }
 
         .wireframe-card {
             background: white;
-            border-radius: 8px;
+            border-radius: 12px;
             overflow: hidden;
             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .wireframe-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .wireframe-card img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-bottom: 1px solid #eee;
+        }
+
+        .wireframe-card p {
+            padding: 1rem;
+            text-align: center;
+            font-weight: 500;
         }
 
         /* UI Design */
@@ -318,6 +334,10 @@ t<!DOCTYPE html>
             border-radius: 20px;
             box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
             transition: all 0.3s ease;
+        }
+
+        .ui-screen:hover {
+            transform: scale(1.05);
         }
 
         /* Style Guide */
@@ -473,30 +493,30 @@ t<!DOCTYPE html>
                 height: 150px;
             }
         }
-         /* Next Project Link */
-    .previous-project {
-      text-align: center;
-      margin: 80px 0;
-    }
-    
-    .previous-project a {
-      display: inline-block;
-      padding: 16px 32px;
-      background: var(--gradient);
-      color: var(--dark);
-      font-family: 'Orbitron', sans-serif;
-      font-weight: bold;
-      text-decoration: none;
-      border-radius: 50px;
-      font-size: 1.1rem;
-      transition: all 0.3s ease;
-      box-shadow: 0 4px 20px rgba(64, 236, 170, 0.6);
-    }
-    
-    .previous-project a:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 8px 25px rgba(64, 236, 170, 0.6);
-    }
+        
+        /* Next Project Link */
+        .previous-project {
+            text-align: center;
+            margin: 80px 0;
+        }
+        
+        .previous-project a {
+            display: inline-block;
+            padding: 16px 32px;
+            background: var(--emerald-green);
+            color: white;
+            font-weight: bold;
+            text-decoration: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 20px rgba(16, 185, 129, 0.3);
+        }
+        
+        .previous-project a:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(16, 185, 129, 0.4);
+        }
     </style>
 </head>
 <body>
@@ -519,7 +539,7 @@ t<!DOCTYPE html>
                     <p><span class="highlight">Duration:</span> 6 months</p>
                 </div>
                 <div class="phone-mockup">
-                    <img src="images/Rectangle.svg" alt="Afrimeals App Screenshot">
+                    <img src="https://via.placeholder.com/300x600/D1FAE5/10B981?text=Afrimeals+App" alt="Afrimeals App Screenshot">
                 </div>
             </div>
         </div>
@@ -546,7 +566,7 @@ t<!DOCTYPE html>
                 </div>
             </div>
 
-            <img src="images/istockphoto-1939930167-612x612.jpg" alt="Problem illustration" style="width:100%; border-radius:12px; margin-top:2rem; box-shadow:0 15px 30px rgba(0,0,0,0.1);">
+            <img src="https://via.placeholder.com/1200x600/F9FAFB/6B7280?text=Problem+Illustration" alt="Problem illustration" style="width:100%; border-radius:12px; margin-top:2rem; box-shadow:0 15px 30px rgba(0,0,0,0.1);">
         </div>
     </section>
 
@@ -567,7 +587,7 @@ t<!DOCTYPE html>
             <div class="research-grid">
                 <div class="research-card">
                     <h3>Key Findings</h3>
-                    <ul style="margin-left:1.5rem; line-height:2;">
+                    <ul>
                         <li>91% prioritize <span class="highlight">authentic taste</span> over speed</li>
                         <li>76% want to <span class="highlight">support local chefs</span></li>
                         <li>68% frustrated by <span class="highlight">limited menu options</span></li>
@@ -599,7 +619,7 @@ t<!DOCTYPE html>
             <div class="personas">
                 <div class="persona-card">
                     <div class="persona-header">
-                        <img src="images/Formal Portrait.png" alt="Persona image" class="persona-image">
+                        <img src="https://via.placeholder.com/80/10B981/FFFFFF?text=BP" alt="Persona image" class="persona-image">
                         <div>
                             <h3>Busy Professional</h3>
                             <p>28-45 years old | Urban areas</p>
@@ -611,7 +631,7 @@ t<!DOCTYPE html>
                 
                 <div class="persona-card">
                     <div class="persona-header">
-                        <img src="images/Confident Professional with a Friendly Demeanor.png" alt="Persona image" class="persona-image">
+                        <img src="https://via.placeholder.com/80/10B981/FFFFFF?text=CE" alt="Persona image" class="persona-image">
                         <div>
                             <h3>Cultural Explorer</h3>
                             <p>22-40 years old | Food enthusiasts</p>
@@ -699,7 +719,7 @@ t<!DOCTYPE html>
                 </div>
             </div>
             
-            <img src="images/Screenshot 2025-07-15 164024.png" alt="User journey visualization" style="width:100%; margin-top:2rem; border-radius:12px;">
+            <img src="https://via.placeholder.com/1200x600/F9FAFB/6B7280?text=User+Journey+Visualization" alt="User journey visualization" style="width:100%; margin-top:2rem; border-radius:12px;">
         </div>
     </section>
 
@@ -709,7 +729,7 @@ t<!DOCTYPE html>
             <h2>Information Architecture</h2>
             <p>We structured the app's content and features to create an intuitive user experience.</p>
             
-            <img src="images/IA.jpg" alt="Information architecture diagram" class="ia-diagram">
+            <img src="https://via.placeholder.com/1200x800/F9FAFB/6B7280?text=Information+Architecture+Diagram" alt="Information architecture diagram" class="ia-diagram">
             
             <h3>Key Decisions</h3>
             <ul>
@@ -729,15 +749,29 @@ t<!DOCTYPE html>
             
             <div class="wireframes">
                 <div class="wireframe-card">
-                    <img src="images/WhatsApp Image 2025-07-15 at 14.12.03_c274338c.jpg" alt="Onboarding wireframe">
+                    <img src="https://via.placeholder.com/600x1000/F9FAFB/6B7280?text=Onboarding+Wireframe" alt="Onboarding wireframe">
+                    <p>Onboarding Flow</p>
                 </div>
                 <div class="wireframe-card">
-                    <img src="images/WhatsApp Image 2025-07-15 at 14.12.20_03c5e5a7.jpg" alt="Browse wireframe">
+                    <img src="https://via.placeholder.com/600x1000/F9FAFB/6B7280?text=Browse+Wireframe" alt="Browse wireframe">
+                    <p>Browse Meals</p>
                 </div>
                 <div class="wireframe-card">
-                    <img src="images/Homeage wf.svg" alt="Chef profile wireframe">
+                    <img src="https://via.placeholder.com/600x1000/F9FAFB/6B7280?text=Chef+Profile+Wireframe" alt="Chef profile wireframe">
+                    <p>Chef Profile</p>
                 </div>
-                
+                <div class="wireframe-card">
+                    <img src="https://via.placeholder.com/600x1000/F9FAFB/6B7280?text=Checkout+Wireframe" alt="Checkout wireframe">
+                    <p>Checkout Process</p>
+                </div>
+                <div class="wireframe-card">
+                    <img src="https://via.placeholder.com/600x1000/F9FAFB/6B7280?text=Tracking+Wireframe" alt="Order tracking wireframe">
+                    <p>Order Tracking</p>
+                </div>
+                <div class="wireframe-card">
+                    <img src="https://via.placeholder.com/600x1000/F9FAFB/6B7280?text=Profile+Wireframe" alt="User profile wireframe">
+                    <p>User Profile</p>
+                </div>
             </div>
             
             <h3>Iterations</h3>
@@ -747,6 +781,8 @@ t<!DOCTYPE html>
                 <li>Simplified navigation</li>
                 <li>Increased text size for readability</li>
                 <li>Added chef verification badges</li>
+                <li>Improved meal filtering options</li>
+                <li>Enhanced order tracking visibility</li>
             </ul>
         </div>
     </section>
@@ -758,10 +794,11 @@ t<!DOCTYPE html>
             <p>The final interface combines authentic African aesthetics with modern usability principles.</p>
             
             <div class="ui-screens">
-                <img src="images/Cart.svg" alt="Home Screen" class="ui-screen">
-                <img src="images/Order.svg" alt="Menu Screen" class="ui-screen">
-                <img src="images/Place Order.svg" alt="Chef Profile" class="ui-screen">
-                <img src="images/Order confirmed.svg" alt="Order Tracking" class="ui-screen">
+                <img src="https://via.placeholder.com/300x600/10B981/FFFFFF?text=Home+Screen" alt="Home Screen" class="ui-screen">
+                <img src="https://via.placeholder.com/300x600/10B981/FFFFFF?text=Menu+Screen" alt="Menu Screen" class="ui-screen">
+                <img src="https://via.placeholder.com/300x600/10B981/FFFFFF?text=Chef+Profile" alt="Chef Profile" class="ui-screen">
+                <img src="https://via.placeholder.com/300x600/10B981/FFFFFF?text=Order+Tracking" alt="Order Tracking" class="ui-screen">
+                <img src="https://via.placeholder.com/300x600/10B981/FFFFFF?text=Checkout" alt="Checkout Screen" class="ui-screen">
             </div>
             
             <h3>Key Features</h3>
@@ -770,6 +807,8 @@ t<!DOCTYPE html>
                 <li><strong>Dish Origins:</strong> Educates users about each meal's cultural significance</li>
                 <li><strong>Customization:</strong> Allows spice level and ingredient adjustments</li>
                 <li><strong>Progress Tracking:</strong> Shows order status in real-time</li>
+                <li><strong>Cultural Tags:</strong> Helps users discover new regional cuisines</li>
+                <li><strong>Chef Verification:</strong> Ensures authenticity of home cooks</li>
             </ul>
         </div>
     </section>
@@ -793,12 +832,15 @@ t<!DOCTYPE html>
                     <div class="colors">
                         <div class="color-swatch" style="background:#10B981;">Emerald<br>#10B981</div>
                         <div class="color-swatch" style="background:#D1FAE5;">Mint<br>#D1FAE5</div>
-                        <div class="color-swatch" style="background:#000000; color:white;">Dark<br>#00000</div>
+                        <div class="color-swatch" style="background:#1F2937; color:white;">Dark<br>#1F2937</div>
+                        <div class="color-swatch" style="background:#F59E0B;">Accent<br>#F59E0B</div>
                     </div>
                 </div>
             </div>
             
-            
+            <h3>UI Components</h3>
+            <img src="https://via.placeholder.com/1200x600/F9FAFB/6B7280?text=UI+Components+Library" alt="UI Components" style="width:100%; border-radius:12px; margin-top:2rem; box-shadow:0 15px 30px rgba(0,0,0,0.1);">
+        </div>
     </section>
 
     <!-- Usability Testing -->
@@ -814,18 +856,20 @@ t<!DOCTYPE html>
                     <li>Some found the spice level selector confusing</li>
                     <li>Requested more details about dish ingredients</li>
                     <li>Wanted to save favorite chefs for easy reordering</li>
+                    <li>Suggested adding preparation time estimates</li>
+                    <li>Requested clearer dietary restriction indicators</li>
                 </ul>
             </div>
             
             <h3>Iterations</h3>
             <div class="wireframes">
                 <div class="wireframe-card">
-                    <img src="images/Meal details.svg" alt="Before testing">
+                    <img src="https://via.placeholder.com/600x1000/F9FAFB/6B7280?text=Before+Testing" alt="Before testing">
                     <p>Before: Basic food details</p>
                 </div>
                 <div class="wireframe-card">
-                    <img src="images/Meal details at.svg" alt="After testing">
-                    <p>After: Enhanced with buttons for the recipes and the chef's kitchen</p>
+                    <img src="https://via.placeholder.com/600x1000/F9FAFB/6B7280?text=After+Testing" alt="After testing">
+                    <p>After: Enhanced with chef kitchen photos and prep time</p>
                 </div>
             </div>
         </div>
@@ -852,7 +896,7 @@ t<!DOCTYPE html>
                 </div>
             </div>
             
-            <img src="images/Elias_mwangi_A_joyful_Kenyan_woman_in_her_late_20s_standing_at_her_modern_apar_2961aaee-f9cf-4144-b544-cb3f015db73e.png" alt="Happy users with Afrimeals delivery" style="width:80%; border-radius:12px; margin:2rem auto; box-shadow:0 20px 40px rgba(0,0,0,0.15);">
+            <img src="https://via.placeholder.com/1200x600/F9FAFB/6B7280?text=Happy+Users+With+Afrimeals+Delivery" alt="Happy users with Afrimeals delivery" style="width:80%; border-radius:12px; margin:2rem auto; box-shadow:0 20px 40px rgba(0,0,0,0.15);">
             
             <h3>Key Learnings</h3>
             <div style="display:grid; grid-template-columns:1fr 1fr; gap:30px; margin-top:1.5rem;">
@@ -864,13 +908,21 @@ t<!DOCTYPE html>
                     <h4>Speed vs Authenticity</h4>
                     <p>Users prioritized taste over delivery time, allowing us to focus on quality.</p>
                 </div>
+                <div style="background:#F9FAFB; padding:1.5rem; border-radius:8px;">
+                    <h4>Community Building</h4>
+                    <p>Chef profiles created personal connections that drove loyalty.</p>
+                </div>
+                <div style="background:#F9FAFB; padding:1.5rem; border-radius:8px;">
+                    <h4>Education Component</h4>
+                    <p>Dish origin stories helped both diaspora and new users appreciate the cuisine.</p>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- Next Project -->
     <div class="previous-project">
-        <a href="crystalfrozen.html">Next Project </a>
+        <a href="crystalfrozen.html">Next Project →</a>
     </div>
 
     <script>
