@@ -1,4 +1,4 @@
-<<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -15,7 +15,7 @@
             --light-text: #6B7280;
             --section-padding: 120px;
         }
- body {
+body {
             font-family: 'Orbitron', sans-serif;
             background-color: var(--dark-bg);
             color: white;
@@ -33,6 +33,7 @@
             color: var(--dark-text);
             background-color: white;
             overflow-x: hidden;
+            line-height: 1.6;
         }
 
         /* Typography */
@@ -46,6 +47,8 @@
         h3 { font-size: 1.8rem; margin: 2rem 0 1rem; }
         p { font-size: 1.1rem; line-height: 1.8; color: var(--light-text); margin-bottom: 1.5rem; }
         .highlight { color: var(--emerald-green); font-weight: 600; }
+        ul { margin-left: 1.5rem; margin-bottom: 1.5rem; }
+        li { margin-bottom: 0.5rem; }
 
         /* Navigation */
         .portfolio-link {
@@ -288,16 +291,35 @@
         /* Wireframes */
         .wireframes {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 30px;
             margin: 3rem 0;
         }
 
         .wireframe-card {
             background: white;
-            border-radius: 8px;
+            border-radius: 12px;
             overflow: hidden;
             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .wireframe-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .wireframe-card img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-bottom: 1px solid #eee;
+        }
+
+        .wireframe-card p {
+            padding: 1rem;
+            text-align: center;
+            font-weight: 500;
         }
 
         /* UI Design */
@@ -318,6 +340,10 @@
             border-radius: 20px;
             box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
             transition: all 0.3s ease;
+        }
+
+        .ui-screen:hover {
+            transform: scale(1.05);
         }
 
         /* Style Guide */
@@ -473,30 +499,30 @@
                 height: 150px;
             }
         }
-         /* Next Project Link */
-    .previous-project {
-      text-align: center;
-      margin: 80px 0;
-    }
-    
-    .previous-project a {
-      display: inline-block;
-      padding: 16px 32px;
-      background: var(--gradient);
-      color: var(--dark);
-      font-family: 'Orbitron', sans-serif;
-      font-weight: bold;
-      text-decoration: none;
-      border-radius: 50px;
-      font-size: 1.1rem;
-      transition: all 0.3s ease;
-      box-shadow: 0 4px 20px rgba(64, 236, 170, 0.6);
-    }
-    
-    .previous-project a:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 8px 25px rgba(64, 236, 170, 0.6);
-    }
+        
+        /* Next Project Link */
+        .previous-project {
+            text-align: center;
+            margin: 80px 0;
+        }
+        
+        .previous-project a {
+            display: inline-block;
+            padding: 16px 32px;
+            background: var(--emerald-green);
+            color: white;
+            font-weight: bold;
+            text-decoration: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 20px rgba(16, 185, 129, 0.3);
+        }
+        
+        .previous-project a:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(16, 185, 129, 0.4);
+        }
     </style>
 </head>
 <body>
@@ -567,7 +593,7 @@
             <div class="research-grid">
                 <div class="research-card">
                     <h3>Key Findings</h3>
-                    <ul style="margin-left:1.5rem; line-height:2;">
+                    <ul>
                         <li>91% prioritize <span class="highlight">authentic taste</span> over speed</li>
                         <li>76% want to <span class="highlight">support local chefs</span></li>
                         <li>68% frustrated by <span class="highlight">limited menu options</span></li>
@@ -729,15 +755,29 @@
             
             <div class="wireframes">
                 <div class="wireframe-card">
-                    <img src="images/WhatsApp Image 2025-07-15 at 14.12.03_c274338c.jpg" alt="Onboarding wireframe">
+                    <img src="images/Homeage wf.svg" alt="Onboarding wireframe">
+                    <p>Homepage</p>
                 </div>
                 <div class="wireframe-card">
-                    <img src="images/WhatsApp Image 2025-07-15 at 14.12.20_03c5e5a7.jpg" alt="Browse wireframe">
+                    <img src="images/afriMeal details wf.svg" alt="Browse wireframe">
+                    <p>Meal description</p>
                 </div>
                 <div class="wireframe-card">
-                    <img src="images/Homeage wf.svg" alt="Chef profile wireframe">
+                    <img src="images/afrimeal order wf.svg" alt="Chef profile wireframe">
+                    <p>Order</p>
                 </div>
-                
+                <div class="wireframe-card">
+                    <img src="images/afrimeal checkout wf.svg" alt="Checkout wireframe">
+                    <p>Checkout Process</p>
+                </div>
+                <div class="wireframe-card">
+                    <img src="images/Afri meals Notifications wf.svg" alt="Order tracking wireframe">
+                    <p>Notifications</p>
+                </div>
+                <div class="wireframe-card">
+                    <img src="images/Profile wf.svg" alt="User profile wireframe">
+                    <p>User Profile</p>
+                </div>
             </div>
             
             <h3>Iterations</h3>
@@ -747,59 +787,209 @@
                 <li>Simplified navigation</li>
                 <li>Increased text size for readability</li>
                 <li>Added chef verification badges</li>
+                <li>Improved meal filtering options</li>
+                <li>Enhanced order tracking visibility</li>
             </ul>
         </div>
     </section>
 
-    <!-- UI Design -->
-    <section id="ui-design">
-        <div class="section-content">
-            <h2>UI Design</h2>
-            <p>The final interface combines authentic African aesthetics with modern usability principles.</p>
-            
-            <div class="ui-screens">
-                <img src="images/Cart.svg" alt="Home Screen" class="ui-screen">
-                <img src="images/Order.svg" alt="Menu Screen" class="ui-screen">
-                <img src="images/Place Order.svg" alt="Chef Profile" class="ui-screen">
-                <img src="images/Order confirmed.svg" alt="Order Tracking" class="ui-screen">
-            </div>
-            
-            <h3>Key Features</h3>
-            <ul>
-                <li><strong>Chef Stories:</strong> Builds trust through personal narratives</li>
-                <li><strong>Dish Origins:</strong> Educates users about each meal's cultural significance</li>
-                <li><strong>Customization:</strong> Allows spice level and ingredient adjustments</li>
-                <li><strong>Progress Tracking:</strong> Shows order status in real-time</li>
-            </ul>
-        </div>
-    </section>
-
-    <!-- Style Guide -->
-    <section id="style-guide">
-        <div class="section-content">
-            <h2>Style Guide</h2>
-            <p>The visual design system ensures consistency across all touchpoints.</p>
-            
-            <div class="style-grid">
-                <div class="style-sample">
-                    <h3>Typography</h3>
-                    <div class="font-display">Playfair Display</div>
-                    <p>Used for headings to convey authenticity and cultural heritage</p>
-                    <div class="font-sans">Poppins</div>
-                    <p>Used for body text and UI elements for readability</p>
-                </div>
-                <div class="style-sample">
-                    <h3>Color Palette</h3>
-                    <div class="colors">
-                        <div class="color-swatch" style="background:#10B981;">Emerald<br>#10B981</div>
-                        <div class="color-swatch" style="background:#D1FAE5;">Mint<br>#D1FAE5</div>
-                        <div class="color-swatch" style="background:#000000; color:white;">Dark<br>#00000</div>
+<!-- UI Design -->
+<section id="ui-design">
+    <div class="section-content">
+        <h2>UI Design System</h2>
+        <p>The final interface combines authentic African aesthetics with modern usability principles, creating a vibrant yet functional experience.</p>
+        
+        <div class="ui-showcase">
+            <!-- Main Screens Gallery -->
+            <div class="screen-gallery">
+                <h3>Core Application Screens</h3>
+                <div class="gallery-grid">
+                    <div class="screen-card">
+                        <img src="images/Homeage.svg" alt="Home Screen">
+                        <div class="screen-info">
+                            <h4>Home Screen</h4>
+                            <ul>
+                                <li>Real live location</li>
+                                <li>search bar</li>
+                                <li>Quick access to favorites</li>
+                                <li>recommendation spotlight carousel</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="screen-card">
+                        <img src="images/Afri Meal Chef Profile.svg" alt="Chef Profile">
+                        <div class="screen-info">
+                            <h4>Chef Profile</h4>
+                            <ul>
+                                <li>Verified chef badge</li>
+                                <li>Personal story section</li>
+                                <li>Specialty dishes gallery</li>
+                                <li>Customer reviews</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="screen-card">
+                        <img src="images/Meal details.svg" alt="Meal Details">
+                        <div class="screen-info">
+                            <h4>Meal Details</h4>
+                            <ul>
+                                <li>High-quality food photos</li>
+                                <li>Cultural origin information</li>
+                                <li>Spice level customization</li>
+                                <li>Dietary restriction tags</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="screen-card">
+                        <img src="images/Place Order.svg" alt="Checkout Flow">
+                        <div class="screen-info">
+                            <h4>Checkout Process</h4>
+                            <ul>
+                                <li>3-step simplified flow</li>
+                                <li>Meal customization summary</li>
+                                <li>Secure payment options</li>
+                                <li>Scheduled delivery choices</li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </div>
+               
             
-            
-    </section>
+<style>
+    /* UI Design Section Styles */
+    .ui-showcase {
+        margin-top: 3rem;
+    }
+    
+    .screen-gallery, 
+    .design-system,
+    .microinteractions,
+    .accessibility {
+        margin-bottom: 4rem;
+    }
+    
+    h3 {
+        font-size: 1.8rem;
+        color: var(--emerald-green);
+        margin-bottom: 1.5rem;
+        padding-bottom: 0.5rem;
+        border-bottom: 2px solid var(--mint-green);
+    }
+    
+    .gallery-grid,
+    .components-grid,
+    .interaction-grid,
+    .accessibility-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 30px;
+        margin-top: 1.5rem;
+    }
+    
+    .screen-card {
+        background: white;
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+        transition: transform 0.3s ease;
+    }
+    
+    .screen-card:hover {
+        transform: translateY(-5px);
+    }
+    
+    .screen-card img {
+        width: 100%;
+        height: auto;
+        border-bottom: 1px solid #eee;
+    }
+    
+    .screen-info {
+        padding: 1.5rem;
+    }
+    
+    .screen-info h4 {
+        font-family: 'Poppins', sans-serif;
+        font-size: 1.3rem;
+        margin-bottom: 1rem;
+        color: var(--dark-text);
+    }
+    
+    .screen-info ul {
+        margin-left: 1rem;
+    }
+    
+    .screen-info li {
+        font-size: 0.95rem;
+        margin-bottom: 0.5rem;
+        color: var(--light-text);
+    }
+    
+    .component-card,
+    .interaction-card,
+    .access-card {
+        background: white;
+        border-radius: 12px;
+        padding: 1.5rem;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        transition: all 0.3s ease;
+    }
+    
+    .component-card:hover,
+    .interaction-card:hover,
+    .access-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    }
+    
+    .component-card img,
+    .access-card img {
+        width: 100%;
+        border-radius: 8px;
+        margin-bottom: 1rem;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    }
+    
+    .component-card h4,
+    .interaction-card h4,
+    .access-card h4 {
+        font-family: 'Poppins', sans-serif;
+        font-size: 1.2rem;
+        margin-bottom: 0.5rem;
+        color: var(--dark-text);
+    }
+    
+    .component-card p,
+    .interaction-card p,
+    .access-card p {
+        font-size: 0.95rem;
+        color: var(--light-text);
+    }
+    
+    video {
+        width: 100%;
+        border-radius: 8px;
+        margin-bottom: 1rem;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    }
+    
+    @media (max-width: 768px) {
+        .gallery-grid,
+        .components-grid,
+        .interaction-grid,
+        .accessibility-grid {
+            grid-template-columns: 1fr;
+        }
+        
+        .screen-card,
+        .component-card,
+        .interaction-card,
+        .access-card {
+            margin-bottom: 1.5rem;
+        }
+    }
+</style>
 
     <!-- Usability Testing -->
     <section id="testing">
@@ -814,6 +1004,8 @@
                     <li>Some found the spice level selector confusing</li>
                     <li>Requested more details about dish ingredients</li>
                     <li>Wanted to save favorite chefs for easy reordering</li>
+                    <li>Suggested adding preparation time estimates</li>
+                    <li>Requested clearer dietary restriction indicators</li>
                 </ul>
             </div>
             
@@ -825,7 +1017,7 @@
                 </div>
                 <div class="wireframe-card">
                     <img src="images/Meal details at.svg" alt="After testing">
-                    <p>After: Enhanced with buttons for the recipes and the chef's kitchen</p>
+                    <p>After: Enhanced with chef kitchen photos and prep time</p>
                 </div>
             </div>
         </div>
@@ -864,13 +1056,21 @@
                     <h4>Speed vs Authenticity</h4>
                     <p>Users prioritized taste over delivery time, allowing us to focus on quality.</p>
                 </div>
+                <div style="background:#F9FAFB; padding:1.5rem; border-radius:8px;">
+                    <h4>Community Building</h4>
+                    <p>Chef profiles created personal connections that drove loyalty.</p>
+                </div>
+                <div style="background:#F9FAFB; padding:1.5rem; border-radius:8px;">
+                    <h4>Education Component</h4>
+                    <p>Dish origin stories helped both diaspora and new users appreciate the cuisine.</p>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- Next Project -->
     <div class="previous-project">
-        <a href="crystalfrozen.html">Next Project </a>
+        <a href="crystalfrozen.html">Next Project →</a>
     </div>
 
     <script>
